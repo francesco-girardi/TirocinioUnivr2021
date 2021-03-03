@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
+namespace MenteBacata.ScivoloCharacterController
 {
     [DefaultExecutionOrder(3000)]
     public class PhysicsSimulationUpdater : MonoBehaviour

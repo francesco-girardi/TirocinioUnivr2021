@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
+namespace MenteBacata.ScivoloCharacterController
 {
     [DefaultExecutionOrder(2000)]
     public class LevelRotator : MonoBehaviour

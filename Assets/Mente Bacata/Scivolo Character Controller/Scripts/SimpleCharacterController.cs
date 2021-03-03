@@ -4,7 +4,7 @@ using MenteBacata.ScivoloCharacterController;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
+namespace MenteBacata.ScivoloCharacterController
 {
     public class SimpleCharacterController : MonoBehaviour
     {

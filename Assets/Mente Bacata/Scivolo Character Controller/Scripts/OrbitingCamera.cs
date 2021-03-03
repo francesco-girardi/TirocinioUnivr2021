@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
+namespace MenteBacata.ScivoloCharacterController
 {
     public class OrbitingCamera : MonoBehaviour
     {
