@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{54822766-578D-D0A7-077B-F91F86BFFC48}</ProjectGuid>
+    <ProjectGuid>{5466171F-D1E0-86F4-6A8B-64578CBBE49C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -618,51 +618,51 @@
       <HintPath>D:/Program Files/Unity/Hub/Editor/2019.4.21f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Workspaces/workspace-unity/Music Swords/Music Swords/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Workspaces/workspace-unity/TirocinioUnivr2021/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ScivoloCharacterController.csproj">
-      <Project>{0F89CF99-2FF0-2B3D-6E55-6E84B8438E5A}</Project>
+      <Project>{30649D67-4CDC-89E5-E1AE-5625B3B2F36E}</Project>
       <Name>ScivoloCharacterController</Name>
     </ProjectReference>
   </ItemGroup>
