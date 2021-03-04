@@ -13,6 +13,15 @@ namespace MenteBacata.ScivoloCharacterController
         private float height = 2f;
 
         [SerializeField]
+        private float crouchedHeightPercentage = 0.5f;
+
+        private bool isCrouched = false;
+
+        private float crouchedHeight;
+
+        private float baseHeight;
+
+        [SerializeField]
         private float radius = 0.5f;
 
 
@@ -32,6 +41,24 @@ namespace MenteBacata.ScivoloCharacterController
         {
             get => height;
             set => height = Mathf.Max(2f * radius, value);
+        }
+
+        /// <summary>
+        /// percentage of crouch Height of the capsule.
+        /// </summary>
+        public float CrouchedHeightPercentage
+        {
+            get => crouchedHeightPercentage;
+            set => crouchedHeightPercentage = Mathf.Max(0f, value);
+        }
+
+        /// <summary>
+        /// percentage of crouch Height of the capsule.
+        /// </summary>
+        public bool IsCrouched
+        {
+            get => isCrouched;
+            set => isCrouched = value;
         }
 
         /// <summary>
@@ -94,7 +121,8 @@ namespace MenteBacata.ScivoloCharacterController
 
 
         private void Awake()
-        {
+        {   this.baseHeight = Height;
+            this.crouchedHeight = Height * CrouchedHeightPercentage;
             DoPreliminaryCheck();
             InstantiateComponents();
         }
@@ -147,6 +175,16 @@ namespace MenteBacata.ScivoloCharacterController
         {
             Gizmos.color = GizmosUtility.defaultColliderColor;
             GizmosUtility.DrawWireCapsule(LowerHemisphereCenter, UpperHemisphereCenter, radius);
+        }
+
+        private void Update(){
+            if (Input.GetButton("Crouch")){
+                Height = this.crouchedHeight;
+                IsCrouched = true;
+            }else{
+                Height = this.baseHeight;
+                IsCrouched = false;
+            }
         }
     }
 }

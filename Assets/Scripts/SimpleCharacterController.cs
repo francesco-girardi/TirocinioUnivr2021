@@ -10,17 +10,31 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
     {
         public float moveSpeed = 5f;
 
+        public float speedAcceleration = 15f;
+
+        public float sprintSpeedMultiplier = 2f;
+
+        public float crouchSpeedMultiplier = 0.5f;
+
         public float jumpSpeed = 8f;
-        
+
         public float rotationSpeed = 720f;
 
-        public float gravity = -25f;
+        public float gravity = 25f;
 
         public CharacterMover mover;
+
+        public CharacterCapsule capsule;
 
         public GroundDetector groundDetector;
 
         public MeshRenderer groundedIndicator;
+
+        private float baseMoveSpeed;
+
+        private float sprintSpeed;
+
+        private float crouchSpeed;
 
         private const float minVerticalSpeed = -12f;
 
@@ -34,7 +48,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
         private float nextUngroundedTime = -1f;
 
         private Transform cameraTransform;
-        
+
         private List<MoveContact> moveContacts = new List<MoveContact>(10);
 
 
@@ -42,7 +56,11 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
 
         private void Start()
-        {
+        {   
+            this.baseMoveSpeed = moveSpeed;
+            this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
+            this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
+            this.gravity = - this.gravity;
             cameraTransform = Camera.main.transform;
         }
 
@@ -87,6 +105,19 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
                 if (groundDetected && IsOnMovingPlatform(groundInfo.collider, out MovingPlatform movingPlatform))
                     platformDisplacement = GetPlatformDisplacementAtPoint(movingPlatform, groundInfo.point);
+
+                if (capsule.IsCrouched)
+                    moveSpeed = crouchSpeed;
+                else if(Input.GetButton("Sprint")){
+                    if (moveSpeed < sprintSpeed)
+                        moveSpeed += speedAcceleration * Time.deltaTime;
+                    else
+                        moveSpeed = sprintSpeed;
+                }else
+                    moveSpeed = baseMoveSpeed;
+
+                
+
             }
             else
             {
@@ -95,12 +126,13 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
                 BounceDownIfTouchedCeiling();
 
-                verticalSpeed += gravity * deltaTime;
+                verticalSpeed += gravity * Time.deltaTime;
 
-                if (verticalSpeed < minVerticalSpeed)
-                    verticalSpeed = minVerticalSpeed;
+                // if (verticalSpeed < minVerticalSpeed)
+                //     verticalSpeed = minVerticalSpeed;
 
                 velocity += verticalSpeed * transform.up;
+
             }
 
             RotateTowards(velocity);
@@ -109,7 +141,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             if (platformDisplacement.HasValue)
                 ApplyPlatformDisplacement(platformDisplacement.Value);
         }
-        
+
         // Gets world space vector in respect of camera orientation from two axes input.
         private Vector3 CameraRelativeVectorFromInput(float x, float y)
         {
@@ -118,7 +150,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
             return x * right + y * forward;
         }
-        
+
         private bool IsSafelyGrounded(bool groundDetected, bool isOnFloor)
         {
             return groundDetected && isOnFloor && verticalSpeed < 0.1f;
@@ -134,7 +166,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
         {
             return groundCollider.TryGetComponent(out platform);
         }
-        
+
         private void RotateTowards(Vector3 direction)
         {
             Vector3 direzioneOrizz = Vector3.ProjectOnPlane(direction, transform.up);
@@ -161,7 +193,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
                 deltaUpRotation = angle
             };
         }
-        
+
         private void BounceDownIfTouchedCeiling()
         {
             for (int i = 0; i < moveContacts.Count; i++)
