@@ -9,7 +9,7 @@
     },
     "com.unity.ext.nunit": {
       "version": "1.0.6",
-      "depth": 0,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -30,6 +30,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.render-pipelines.core": {
       "version": "7.5.3",
       "depth": 1,
@@ -65,6 +66,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> 117c2b9a82a7d3026693cd3a86b0d4201c79a125
     "com.unity.test-framework": {
       "version": "1.1.22",
       "depth": 0,
@@ -77,7 +80,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "2.0.1",
+      "version": "2.1.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
