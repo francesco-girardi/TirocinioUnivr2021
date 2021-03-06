@@ -22,6 +22,12 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
         public float gravity = 25f;
 
+        public float dashDistance = 100;
+
+        public float dashDuration = 1f;
+
+        public bool isDashing = false;
+
         public CharacterMover mover;
 
         public CharacterCapsule capsule;
@@ -115,8 +121,6 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
                         moveSpeed = sprintSpeed;
                 }else
                     moveSpeed = baseMoveSpeed;
-
-                
 
             }
             else

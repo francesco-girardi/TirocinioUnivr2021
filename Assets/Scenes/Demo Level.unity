@@ -15493,6 +15493,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2573877700867721432, guid: a84e11ee423eace4aac65d32b52ee82f,
         type: 3}
+      propertyPath: dashDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573877700867721432, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: dashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2573877700867721432, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
       propertyPath: sprintMultiplier
       value: 3
       objectReference: {fileID: 0}
