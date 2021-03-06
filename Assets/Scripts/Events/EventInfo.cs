@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 namespace Events {
 
     /// <summary>
@@ -15,4 +16,7 @@ namespace Events {
         public int VerbosityLevel;
     }
 
+    public class PlayerDeathInfo : EventInfo {
+        public GameObject killer;
+    }
 }
