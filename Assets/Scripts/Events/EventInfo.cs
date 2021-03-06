@@ -16,6 +16,9 @@ namespace Events {
         public int VerbosityLevel;
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class PlayerDeathInfo : EventInfo {
         public GameObject killer;
     }
