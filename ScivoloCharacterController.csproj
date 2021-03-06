@@ -68,6 +68,10 @@
     <Compile Include="Assets\Scripts\CharacterMover.cs" />
     <Compile Include="Assets\Scripts\Console\DebugCommandBase.cs" />
     <Compile Include="Assets\Scripts\Console\DebugController.cs" />
+    <Compile Include="Assets\Scripts\Events\EventInfo.cs" />
+    <Compile Include="Assets\Scripts\Events\EventSystem.cs" />
+    <Compile Include="Assets\Scripts\Events\GenericListener.cs" />
+    <Compile Include="Assets\Scripts\Events\test.cs" />
     <Compile Include="Assets\Scripts\GroundDetector.cs" />
     <Compile Include="Assets\Scripts\GroundInfo.cs" />
     <Compile Include="Assets\Scripts\Internal\CapsuleSweepTestWithBuffer.cs" />
