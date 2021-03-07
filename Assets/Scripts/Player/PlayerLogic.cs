@@ -15,10 +15,15 @@ public class PlayerLogic : CharacterStats {
         }
     }
 
+    [Header("View objects")]
+    public Interactable focus;
+
     [Header("Healthbar Info")]
     public Slider healthBarSlider;
 
     private HealthBar healthBar;
+
+    private Camera mainCamera;
 
     private string dataPath;
 
@@ -43,12 +48,50 @@ public class PlayerLogic : CharacterStats {
         healthBar.SetMaxHealth(maxHealth);
     }
 
+    private void Start() {
+        mainCamera = Camera.main;
+    }
+
     private void Update() {
         healthBar.SetHealth(currentHealth);
+
+        if (Input.GetMouseButtonDown(0))
+            RemoveFocus();
+
+        if (Input.GetMouseButtonDown(1)) {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 5)) {
+                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                if (interactable != null)
+                    SetFocus(interactable);
+            }
+        }
 
         if (currentHealth <= 0)
             Die();
     }
+
+    private void SetFocus(Interactable interactable) {
+
+        if (interactable != focus) {
+            if (focus != null)
+                focus.OnDefocused();
+
+            focus = interactable;
+        }
+
+        interactable.OnFocused(transform);
+    }
+
+    private void RemoveFocus() {
+        if (focus != null)
+            focus.OnDefocused();
+
+        focus = null;
+    }
+
 }
 
 /// <summary>
