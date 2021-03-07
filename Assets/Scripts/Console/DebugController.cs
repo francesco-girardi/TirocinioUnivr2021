@@ -75,6 +75,9 @@ namespace Console {
                 "player_health", (x) => {
                     Debug.Log("Player health set to: " + x);
                     PlayerLogic.FindObjectOfType<CharacterStats>().SetCurrentHealth((int)x);
+
+                    if (x <= 0)
+                        PlayerLogic.Killer = gameObject;
                 });
 
             commandList = new List<object> {

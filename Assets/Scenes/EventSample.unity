@@ -517,7 +517,7 @@ MonoBehaviour:
   attackDelay: 0.6
   damage:
     baseValue: 5
-  healthBarSlider: {fileID: 0}
+  healthBarSlider: {fileID: 281310138}
 --- !u!1 &952129188
 GameObject:
   m_ObjectHideFlags: 0

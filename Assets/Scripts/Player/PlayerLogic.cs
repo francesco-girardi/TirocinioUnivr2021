@@ -5,6 +5,16 @@ using Events;
 
 public class PlayerLogic : CharacterStats {
 
+    private static GameObject __Killer;
+    public static GameObject Killer {
+        get {
+            return __Killer;
+        }
+        set {
+            __Killer = value;
+        }
+    }
+
     [Header("Healthbar Info")]
     public Slider healthBarSlider;
 
@@ -17,7 +27,7 @@ public class PlayerLogic : CharacterStats {
 
         PlayerDeathInfo playerDeathInfo = new PlayerDeathInfo();
         playerDeathInfo.EventDescription = "Player death";
-        playerDeathInfo.killer = gameObject;
+        playerDeathInfo.killer = __Killer;
 
         EventSystem.Current.FireEvent(playerDeathInfo);
 
@@ -31,14 +41,12 @@ public class PlayerLogic : CharacterStats {
 
         healthBar = new HealthBar(healthBarSlider);
         healthBar.SetMaxHealth(maxHealth);
-
-        Debug.Log(currentHealth);
     }
 
     private void Update() {
         healthBar.SetHealth(currentHealth);
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (currentHealth <= 0)
             Die();
     }
 }
