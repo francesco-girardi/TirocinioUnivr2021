@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Stat;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Console {
@@ -6,6 +7,8 @@ namespace Console {
     public class DebugController : MonoBehaviour {
 
         public static DebugCommand HELP;
+
+        public static DebugCommand<float> PLAYER_HEALTH;
 
         public List<object> commandList;
 
@@ -68,8 +71,15 @@ namespace Console {
                 showHelp = true;
             });
 
+            PLAYER_HEALTH = new DebugCommand<float>("player_health", "Set current player health into the choosen value.",
+                "player_health", (x) => {
+                    Debug.Log("Player health set to: " + x);
+                    PlayerLogic.FindObjectOfType<CharacterStats>().SetCurrentHealth((int)x);
+                });
+
             commandList = new List<object> {
                 HELP,
+                PLAYER_HEALTH,
             };
         }
 
