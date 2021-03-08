@@ -10,6 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /NuGet/
+NuGet/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -22,6 +23,12 @@
 
 # Visual Studio cache directory
 .vs/
+
+# Visual Studio Code cache directory
+.vscode/
+
+# Omnisharp configuration
+omnisharp.json
 
 # Gradle cache directory
 .gradle/
