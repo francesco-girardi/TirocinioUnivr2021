@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
-{
-    public class OrbitingCamera : MonoBehaviour
-    {
+namespace Movement {
+
+    public class OrbitingCamera : MonoBehaviour {
         public Transform target;
 
         public float distance = 5f;
@@ -14,8 +13,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
         private float xRot = 20f;
 
-        private void Start()
-        {
+        private void Start() {
 #if UNITY_EDITOR
             // Somehow after updating to 2019.3, mouse axes sensitivity decreased, but only in the editor.
             sensitivity *= 10f;
@@ -25,8 +23,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 #endif
         }
 
-        private void LateUpdate()
-        {
+        private void LateUpdate() {
             yRot += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
             xRot -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
             xRot = Mathf.Clamp(xRot, 0f, 75f);
@@ -37,5 +34,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
             transform.SetPositionAndRotation(target.position + targetToCamera, cameraRotation);
         }
+
     }
+
 }

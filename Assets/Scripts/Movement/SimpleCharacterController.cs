@@ -1,13 +1,9 @@
-﻿//#define MB_DEBUG
-
-using MenteBacata.ScivoloCharacterController;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
-{
-    public class SimpleCharacterController : MonoBehaviour
-    {
+namespace Movement {
+
+    public class SimpleCharacterController : MonoBehaviour {
         public float moveSpeed = 5f;
 
         public float speedAcceleration = 15f;
@@ -55,17 +51,15 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
         private float GroundClampSpeed => -Mathf.Tan(Mathf.Deg2Rad * mover.maxFloorAngle) * moveSpeed;
 
 
-        private void Start()
-        {   
+        private void Start() {
             this.baseMoveSpeed = moveSpeed;
             this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
             this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
-            this.gravity = - this.gravity;
+            this.gravity = -this.gravity;
             cameraTransform = Camera.main.transform;
         }
 
-        private void Update()
-        {
+        private void Update() {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
@@ -74,8 +68,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             UpdateMovement(moveDirection, Time.deltaTime);
         }
 
-        private void UpdateMovement(Vector3 moveDirection, float deltaTime)
-        {
+        private void UpdateMovement(Vector3 moveDirection, float deltaTime) {
             Vector3 velocity = moveSpeed * moveDirection;
             PlatformDisplacement? platformDisplacement = null;
 
@@ -88,15 +81,13 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
             SetGroundedIndicatorColor(isGrounded);
 
-            if (isGrounded && Input.GetButtonDown("Jump"))
-            {
+            if (isGrounded && Input.GetButtonDown("Jump")) {
                 verticalSpeed = jumpSpeed;
                 nextUngroundedTime = -1f;
                 isGrounded = false;
             }
 
-            if (isGrounded)
-            {
+            if (isGrounded) {
                 mover.preventMovingUpSteepSlope = true;
                 mover.canClimbSteps = true;
 
@@ -108,19 +99,17 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
                 if (capsule.IsCrouched)
                     moveSpeed = crouchSpeed;
-                else if(Input.GetButton("Sprint")){
+                else if (Input.GetButton("Sprint")) {
                     if (moveSpeed < sprintSpeed)
                         moveSpeed += speedAcceleration * Time.deltaTime;
                     else
                         moveSpeed = sprintSpeed;
-                }else
+                } else
                     moveSpeed = baseMoveSpeed;
 
-                
 
-            }
-            else
-            {
+
+            } else {
                 mover.preventMovingUpSteepSlope = false;
                 mover.canClimbSteps = false;
 
@@ -143,32 +132,27 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
         }
 
         // Gets world space vector in respect of camera orientation from two axes input.
-        private Vector3 CameraRelativeVectorFromInput(float x, float y)
-        {
+        private Vector3 CameraRelativeVectorFromInput(float x, float y) {
             Vector3 forward = Vector3.ProjectOnPlane(cameraTransform.forward, transform.up).normalized;
             Vector3 right = Vector3.Cross(transform.up, forward);
 
             return x * right + y * forward;
         }
 
-        private bool IsSafelyGrounded(bool groundDetected, bool isOnFloor)
-        {
+        private bool IsSafelyGrounded(bool groundDetected, bool isOnFloor) {
             return groundDetected && isOnFloor && verticalSpeed < 0.1f;
         }
 
-        private void SetGroundedIndicatorColor(bool isGrounded)
-        {
+        private void SetGroundedIndicatorColor(bool isGrounded) {
             if (groundedIndicator != null)
                 groundedIndicator.material.color = isGrounded ? Color.green : Color.blue;
         }
 
-        private bool IsOnMovingPlatform(Collider groundCollider, out MovingPlatform platform)
-        {
+        private bool IsOnMovingPlatform(Collider groundCollider, out MovingPlatform platform) {
             return groundCollider.TryGetComponent(out platform);
         }
 
-        private void RotateTowards(Vector3 direction)
-        {
+        private void RotateTowards(Vector3 direction) {
             Vector3 direzioneOrizz = Vector3.ProjectOnPlane(direction, transform.up);
 
             if (direzioneOrizz.sqrMagnitude < 1E-06f)
@@ -178,8 +162,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotazioneObbiettivo, rotationSpeed * Time.deltaTime);
         }
 
-        private PlatformDisplacement GetPlatformDisplacementAtPoint(MovingPlatform platform, Vector3 point)
-        {
+        private PlatformDisplacement GetPlatformDisplacementAtPoint(MovingPlatform platform, Vector3 point) {
             platform.GetDisplacement(out Vector3 platformDeltaPosition, out Quaternion platformDeltaRotation);
             Vector3 localPosition = point - platform.transform.position;
             Vector3 deltaPosition = platformDeltaPosition + platformDeltaRotation * localPosition - localPosition;
@@ -187,35 +170,31 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             platformDeltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
             angle *= Mathf.Sign(Vector3.Dot(axis, transform.up));
 
-            return new PlatformDisplacement()
-            {
+            return new PlatformDisplacement() {
                 deltaPosition = deltaPosition,
                 deltaUpRotation = angle
             };
         }
 
-        private void BounceDownIfTouchedCeiling()
-        {
-            for (int i = 0; i < moveContacts.Count; i++)
-            {
-                if (Vector3.Dot(moveContacts[i].normal, transform.up) < -0.7f)
-                {
+        private void BounceDownIfTouchedCeiling() {
+            for (int i = 0; i < moveContacts.Count; i++) {
+                if (Vector3.Dot(moveContacts[i].normal, transform.up) < -0.7f) {
                     verticalSpeed = -0.25f * verticalSpeed;
                     break;
                 }
             }
         }
 
-        private void ApplyPlatformDisplacement(PlatformDisplacement platformDisplacement)
-        {
+        private void ApplyPlatformDisplacement(PlatformDisplacement platformDisplacement) {
             transform.Translate(platformDisplacement.deltaPosition, Space.World);
             transform.Rotate(0f, platformDisplacement.deltaUpRotation, 0f, Space.Self);
         }
 
-        private struct PlatformDisplacement
-        {
+        private struct PlatformDisplacement {
             public Vector3 deltaPosition;
             public float deltaUpRotation;
         }
+
     }
+
 }

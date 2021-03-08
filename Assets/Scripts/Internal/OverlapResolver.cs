@@ -3,11 +3,10 @@
 using UnityEngine;
 using static MenteBacata.ScivoloCharacterController.Internal.OverlapChecker;
 using static MenteBacata.ScivoloCharacterController.Internal.DisplacementOfBestFitCalculator;
+using Movement;
 
-namespace MenteBacata.ScivoloCharacterController.Internal
-{
-    public static class OverlapResolver
-    {
+namespace MenteBacata.ScivoloCharacterController.Internal {
+    public static class OverlapResolver {
         private const int maxIterations = 3;
 
         internal const int maxOverlaps = 5;
@@ -23,8 +22,7 @@ namespace MenteBacata.ScivoloCharacterController.Internal
         /// <summary>
         /// Tries to resolve capsule's overlaps, if it succeeds it return true, false otherwise.
         /// </summary>
-        public static bool TryResolveCapsuleOverlap(CharacterCapsule capsule, in Vector3 initialPosition, float resolveOffset, LayerMask collisionMask, out Vector3 suggestedPosition)
-        {
+        public static bool TryResolveCapsuleOverlap(CharacterCapsule capsule, in Vector3 initialPosition, float resolveOffset, LayerMask collisionMask, out Vector3 suggestedPosition) {
             Vector3 toLowerCenter = capsule.ToLowerHemisphereCenter;
             Vector3 toUpperCenter = capsule.ToUpperHemisphereCenter;
             CapsuleCollider capsuleCollider = capsule.Collider;
@@ -39,13 +37,11 @@ namespace MenteBacata.ScivoloCharacterController.Internal
             Vector3 currentPosition = initialPosition;
             bool success = false;
 
-            for (int i = 0; i < maxIterations; i++)
-            {
+            for (int i = 0; i < maxIterations; i++) {
                 Vector3 lowerCenter = currentPosition + toLowerCenter;
                 Vector3 upperCenter = currentPosition + toUpperCenter;
 
-                if (!CheckCapsuleOverlap(lowerCenter, upperCenter, originalRadius, collisionMask))
-                {
+                if (!CheckCapsuleOverlap(lowerCenter, upperCenter, originalRadius, collisionMask)) {
                     success = true;
                     break;
                 }
@@ -54,8 +50,7 @@ namespace MenteBacata.ScivoloCharacterController.Internal
 
                 int displacementsCount = PopulateDisplacements(currentPosition, rotation, capsuleCollider, overlapsCount);
 
-                if (displacementsCount > 0)
-                {
+                if (displacementsCount > 0) {
                     Vector3 displacement;
 
                     if (displacementsCount > 1)
@@ -67,9 +62,7 @@ namespace MenteBacata.ScivoloCharacterController.Internal
 
                     if (Math.IsCircaZero(displacement))
                         break;
-                }
-                else
-                {
+                } else {
                     success = true;
                     break;
                 }
@@ -83,20 +76,17 @@ namespace MenteBacata.ScivoloCharacterController.Internal
             return success || !CheckCapsuleOverlap(currentPosition + toLowerCenter, currentPosition + toUpperCenter, originalRadius, collisionMask);
         }
 
-        private static int PopulateDisplacements(in Vector3 position, in Quaternion rotation, CapsuleCollider capsuleCollider, int overlapsNumber)
-        {
+        private static int PopulateDisplacements(in Vector3 position, in Quaternion rotation, CapsuleCollider capsuleCollider, int overlapsNumber) {
             int k = 0;
 
-            for (int i = 0; i < overlapsNumber; i++)
-            {
+            for (int i = 0; i < overlapsNumber; i++) {
                 Collider otherCollider = overlaps[i];
 
                 if (capsuleCollider == otherCollider)
                     continue;
 
                 if (Physics.ComputePenetration(capsuleCollider, position, rotation, otherCollider, otherCollider.transform.position, otherCollider.transform.rotation,
-                    out Vector3 direction, out float distance))
-                {
+                    out Vector3 direction, out float distance)) {
                     directions[k] = direction;
                     distances[k++] = distance;
                 }

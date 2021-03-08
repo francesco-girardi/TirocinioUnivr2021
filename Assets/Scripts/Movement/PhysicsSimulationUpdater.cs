@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
-{
+namespace Movement {
+
     [DefaultExecutionOrder(3000)]
-    public class PhysicsSimulationUpdater : MonoBehaviour
-    {
+    public class PhysicsSimulationUpdater : MonoBehaviour {
         // It can happen that deltaTime is 0 even if timeScale is not (for instance when in the same frame timeScale turns from 0 
         // to 1). Since Physics.Simulate throws an error when called with a step of 0, it guarantees that a minimum value for 
         // deltaTime is used.
@@ -15,8 +14,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             => Mathf.Max(Time.deltaTime, 1E-05f);
 #endif
 
-        void Update()
-        {
+        void Update() {
             if (Physics.autoSimulation)
                 return;
 
@@ -25,5 +23,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
 
             Physics.Simulate(DeltaTime);
         }
+
     }
+
 }

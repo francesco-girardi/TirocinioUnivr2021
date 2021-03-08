@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 
-namespace MenteBacata.ScivoloCharacterControllerDemo
-{
+namespace Movement {
+
     [DefaultExecutionOrder(1000)]
-    public class MovingPlatform : MonoBehaviour
-    {
+    public class MovingPlatform : MonoBehaviour {
         public float speed = 2f;
 
         public float angularSpeed = 1f;
@@ -27,8 +26,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
         private Vector3 UpDirection => transform.parent != null ? transform.parent.up : transform.up;
 
 
-        private void Start()
-        {
+        private void Start() {
             start = transform.GetChild(0);
             end = transform.GetChild(1);
 
@@ -36,11 +34,10 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             end.SetParent(transform.parent, true);
         }
 
-        private void Update()
-        {
+        private void Update() {
             if (!isDisplacementUpdated)
                 UpdateDisplacement(Time.deltaTime);
-            
+
             transform.SetPositionAndRotation(transform.position + deltaPosition, deltaRotation * transform.rotation);
 
             // Invert moving direction when it reaches the destination.
@@ -50,8 +47,7 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             isDisplacementUpdated = false;
         }
 
-        public void GetDisplacement(out Vector3 deltaPosition, out Quaternion deltaRotation)
-        {
+        public void GetDisplacement(out Vector3 deltaPosition, out Quaternion deltaRotation) {
             if (!isDisplacementUpdated)
                 UpdateDisplacement(Time.deltaTime);
 
@@ -59,11 +55,12 @@ namespace MenteBacata.ScivoloCharacterControllerDemo
             deltaRotation = this.deltaRotation;
         }
 
-        private void UpdateDisplacement(float deltaTime)
-        {
+        private void UpdateDisplacement(float deltaTime) {
             deltaPosition = Vector3.MoveTowards(Vector3.zero, CurrentDestination - transform.position, speed * deltaTime);
             deltaRotation = Quaternion.AngleAxis(angularSpeed * deltaTime, UpDirection);
             isDisplacementUpdated = true;
         }
+
     }
+
 }
