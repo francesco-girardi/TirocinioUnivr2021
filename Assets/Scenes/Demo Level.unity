@@ -7553,7 +7553,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 390751182}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa7173a4a1053f418371ae953225e3a, type: 3}
+  m_Script: {fileID: 11500000, guid: d251fbc58ae6a1a41987e90ac1db17d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &390780094
@@ -7656,18 +7656,6 @@ Transform:
   m_Father: {fileID: 1078148757}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &430005304 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2573877700867721430, guid: a84e11ee423eace4aac65d32b52ee82f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1830498368}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7891d45af59ea86488119e7d5bc93b8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &452022382
 Mesh:
   m_ObjectHideFlags: 0
@@ -9092,7 +9080,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1078148756}
+      - m_Target: {fileID: 0}
         m_MethodName: HandleRotationChange
         m_Mode: 1
         m_Arguments:
@@ -10808,7 +10796,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1078148755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff3660213c297fe42b9894f5388dae75, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a1bc04c39c2bf24f9957e2741c57f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 27241332}
@@ -10818,7 +10806,7 @@ MonoBehaviour:
   xRotSlider: {fileID: 569431847}
   yRotSlider: {fileID: 1718466995}
   zRotSlider: {fileID: 1428901629}
-  showHideMenuKey: 113
+  showHideMenuKey: 0
 --- !u!4 &1078148757
 Transform:
   m_ObjectHideFlags: 0
@@ -10858,7 +10846,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1078148755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842c791837b70f94cad96efe45068228, type: 3}
+  m_Script: {fileID: 11500000, guid: b8f2b5c0791d82c4ba09c660b003fa89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1109479716
@@ -12784,7 +12772,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1078148756}
+      - m_Target: {fileID: 0}
         m_MethodName: HandleRotationChange
         m_Mode: 1
         m_Arguments:
@@ -13915,7 +13903,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1593150340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7f530d0c8aedf24a98e3924c7e869c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 72fc03865a209c74db83ad0c46c6fa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1608338576}
@@ -14691,7 +14679,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1078148756}
+      - m_Target: {fileID: 0}
         m_MethodName: HandleRotationChange
         m_Mode: 1
         m_Arguments:
@@ -14713,6 +14701,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1736625906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2573877700867721438, guid: a84e11ee423eace4aac65d32b52ee82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1830498368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1736625907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736625906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec5012a0d979024186193468a90f879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  sprintSpeedMultiplier: 2
+  crouchSpeedMultiplier: 0.5
+  jumpSpeed: 8
+  rotationSpeed: 720
+  gravity: -50
+  mover: {fileID: 0}
+  capsule: {fileID: 0}
+  groundDetector: {fileID: 0}
+  groundedIndicator: {fileID: 0}
 --- !u!1 &1739682510
 GameObject:
   m_ObjectHideFlags: 0
@@ -15506,7 +15522,7 @@ PrefabInstance:
         type: 3}
       propertyPath: capsule
       value: 
-      objectReference: {fileID: 430005304}
+      objectReference: {fileID: 0}
     - target: {fileID: 2573877700867721432, guid: a84e11ee423eace4aac65d32b52ee82f,
         type: 3}
       propertyPath: gravity
@@ -15592,7 +15608,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2573877700867721430, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
+    - {fileID: 2573877700867721428, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
+    - {fileID: 2573877700867721432, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
+    - {fileID: 2573877700867721433, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
+    - {fileID: 8789691391967719740, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a84e11ee423eace4aac65d32b52ee82f, type: 3}
 --- !u!43 &1834516489
 Mesh:
@@ -16493,7 +16514,7 @@ GameObject:
   - component: {fileID: 1973736028}
   - component: {fileID: 1973736027}
   - component: {fileID: 1973736025}
-  - component: {fileID: 1973736030}
+  - component: {fileID: 1973736026}
   m_Layer: 0
   m_Name: Moving Platform
   m_TagString: Untagged
@@ -16515,6 +16536,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1682037508}
+--- !u!114 &1973736026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973736024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1e9b4078bd477f47a3fc01f17e9051a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  angularSpeed: 1
 --- !u!23 &1973736027
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -16578,20 +16613,6 @@ Transform:
   m_Father: {fileID: 1078148757}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1973736030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1973736024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6e50bc1f6b8838408a64da378cc4ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  angularSpeed: 30
 --- !u!1 &1995509718
 GameObject:
   m_ObjectHideFlags: 0

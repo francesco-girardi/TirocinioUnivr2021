@@ -4,19 +4,19 @@ using UnityEngine;
 namespace Movement {
 
     public class SimpleCharacterController : MonoBehaviour {
-        public float moveSpeed = 5f;
-
-        public float speedAcceleration = 15f;
+        public float moveSpeed = 20f;
 
         public float sprintSpeedMultiplier = 2f;
 
+        public float timeToSprintDelay = 0.5f;
+
         public float crouchSpeedMultiplier = 0.5f;
 
-        public float jumpSpeed = 8f;
+        public float jumpSpeed = 30f;
 
         public float rotationSpeed = 720f;
 
-        public float gravity = 25f;
+        public float gravity = -60f;
 
         public CharacterMover mover;
 
@@ -47,6 +47,9 @@ namespace Movement {
 
         private List<MoveContact> moveContacts = new List<MoveContact>(10);
 
+        private float firstVerticalPress;
+
+        private bool isSprinting = false;
 
         private float GroundClampSpeed => -Mathf.Tan(Mathf.Deg2Rad * mover.maxFloorAngle) * moveSpeed;
 
@@ -55,8 +58,9 @@ namespace Movement {
             this.baseMoveSpeed = moveSpeed;
             this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
             this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
-            this.gravity = -this.gravity;
             cameraTransform = Camera.main.transform;
+            
+            firstVerticalPress = Time.time;
         }
 
         private void Update() {
@@ -96,18 +100,24 @@ namespace Movement {
 
                 if (groundDetected && IsOnMovingPlatform(groundInfo.collider, out MovingPlatform movingPlatform))
                     platformDisplacement = GetPlatformDisplacementAtPoint(movingPlatform, groundInfo.point);
-
-                if (capsule.IsCrouched)
+                
+                // this block of code checks if the player is crouching, 
+                // if he is crouching he will not be able to sprint, 
+                // but if he is not crouching then he will be able to sprint
+                if (capsule.IsCrouched){
                     moveSpeed = crouchSpeed;
-                else if (Input.GetButton("Sprint")) {
-                    if (moveSpeed < sprintSpeed)
-                        moveSpeed += speedAcceleration * Time.deltaTime;
-                    else
-                        moveSpeed = sprintSpeed;
-                } else
-                    moveSpeed = baseMoveSpeed;
-
-
+                    isSprinting = false;
+                }else if (Input.GetButtonDown("Vertical"))
+                        if(Time.time - firstVerticalPress < timeToSprintDelay){
+                            moveSpeed = sprintSpeed;
+                            isSprinting = true;
+                        }else {
+                            firstVerticalPress = Time.time;
+                            moveSpeed = baseMoveSpeed;
+                            isSprinting = false;
+                        }
+                else if(!isSprinting)
+                        moveSpeed = baseMoveSpeed;
 
             } else {
                 mover.preventMovingUpSteepSlope = false;
