@@ -95,11 +95,6 @@ namespace Movement {
                 isGrounded = false;
             }
 
-            if(Time.time >= dashFinishTime){
-                isDashing = false;
-                moveSpeed = baseMoveSpeed;
-            }
-
             if (isGrounded) {
                 mover.preventMovingUpSteepSlope = true;
                 mover.canClimbSteps = true;
@@ -110,9 +105,13 @@ namespace Movement {
                 if (groundDetected && IsOnMovingPlatform(groundInfo.collider, out MovingPlatform movingPlatform))
                     platformDisplacement = GetPlatformDisplacementAtPoint(movingPlatform, groundInfo.point);
                 
-                // this block of code checks if the player is crouching, 
-                // if he is crouching he will not be able to sprint, 
-                // but if he is not crouching then he will be able to sprint
+                // STOP DASH
+                if(Time.time >= dashFinishTime){
+                    isDashing = false;
+                    moveSpeed = baseMoveSpeed;
+                }
+                
+                // CROUCH - SPRINT
                 if (capsule.IsCrouched){
                     moveSpeed = crouchSpeed;
                 }else if (Input.GetButton("Sprint") && !isDashing)
@@ -120,7 +119,8 @@ namespace Movement {
                 else if(!isDashing)
                     moveSpeed = baseMoveSpeed;
 
-                //DASH
+
+                // DASH
                 if(Input.GetButtonDown("Dash") && Time.time >= nextDashTime){
                     dashFinishTime = Time.time + dashTime;
                     nextDashTime = dashFinishTime + dashCD;
