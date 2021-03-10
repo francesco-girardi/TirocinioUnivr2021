@@ -14701,34 +14701,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &1736625906 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2573877700867721438, guid: a84e11ee423eace4aac65d32b52ee82f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1830498368}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1736625907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1736625906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dec5012a0d979024186193468a90f879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  sprintSpeedMultiplier: 2
-  crouchSpeedMultiplier: 0.5
-  jumpSpeed: 8
-  rotationSpeed: 720
-  gravity: -50
-  mover: {fileID: 0}
-  capsule: {fileID: 0}
-  groundDetector: {fileID: 0}
-  groundedIndicator: {fileID: 0}
 --- !u!1 &1739682510
 GameObject:
   m_ObjectHideFlags: 0
@@ -15513,6 +15485,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1078148757}
     m_Modifications:
+    - target: {fileID: 629844195401213423, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 629844195401213423, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 629844195401213423, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: dashDistance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 629844195401213423, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: crouchSpeedMultiplier
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 629844195401213423, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: sprintSpeedMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535496232463587962, guid: a84e11ee423eace4aac65d32b52ee82f,
+        type: 3}
+      propertyPath: maxFloorAngle
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2573877700867721430, guid: a84e11ee423eace4aac65d32b52ee82f,
         type: 3}
       propertyPath: crouchedHeightPercentage

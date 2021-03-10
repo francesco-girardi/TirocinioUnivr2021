@@ -8,9 +8,13 @@ namespace Movement {
 
         public float sprintSpeedMultiplier = 2f;
 
-        public float timeToSprintDelay = 0.5f;
-
         public float crouchSpeedMultiplier = 0.5f;
+
+        public float dashDistance = 20f;
+
+        public float dashTime = 0.2f;
+
+        public float dashCD = 0.5f;
 
         public float jumpSpeed = 30f;
 
@@ -32,6 +36,12 @@ namespace Movement {
 
         private float crouchSpeed;
 
+        private float dashFinishTime;
+
+        private bool isDashing = false;
+
+        private float nextDashTime = 0f;
+
         private const float minVerticalSpeed = -12f;
 
         // Allowed time before the character is set to ungrounded from the last time he was safely grounded.
@@ -47,10 +57,6 @@ namespace Movement {
 
         private List<MoveContact> moveContacts = new List<MoveContact>(10);
 
-        private float firstVerticalPress;
-
-        private bool isSprinting = false;
-
         private float GroundClampSpeed => -Mathf.Tan(Mathf.Deg2Rad * mover.maxFloorAngle) * moveSpeed;
 
 
@@ -59,8 +65,6 @@ namespace Movement {
             this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
             this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
             cameraTransform = Camera.main.transform;
-            
-            firstVerticalPress = Time.time;
         }
 
         private void Update() {
@@ -85,10 +89,15 @@ namespace Movement {
 
             SetGroundedIndicatorColor(isGrounded);
 
-            if (isGrounded && Input.GetButtonDown("Jump")) {
+            if (isGrounded && Input.GetButtonDown("Jump") && !isDashing) {
                 verticalSpeed = jumpSpeed;
                 nextUngroundedTime = -1f;
                 isGrounded = false;
+            }
+
+            if(Time.time >= dashFinishTime){
+                isDashing = false;
+                moveSpeed = baseMoveSpeed;
             }
 
             if (isGrounded) {
@@ -106,18 +115,18 @@ namespace Movement {
                 // but if he is not crouching then he will be able to sprint
                 if (capsule.IsCrouched){
                     moveSpeed = crouchSpeed;
-                    isSprinting = false;
-                }else if (Input.GetButtonDown("Vertical"))
-                        if(Time.time - firstVerticalPress < timeToSprintDelay){
-                            moveSpeed = sprintSpeed;
-                            isSprinting = true;
-                        }else {
-                            firstVerticalPress = Time.time;
-                            moveSpeed = baseMoveSpeed;
-                            isSprinting = false;
-                        }
-                else if(!isSprinting)
-                        moveSpeed = baseMoveSpeed;
+                }else if (Input.GetButton("Sprint") && !isDashing)
+                    moveSpeed = sprintSpeed;
+                else if(!isDashing)
+                    moveSpeed = baseMoveSpeed;
+
+                //DASH
+                if(Input.GetButtonDown("Dash") && Time.time >= nextDashTime){
+                    dashFinishTime = Time.time + dashTime;
+                    nextDashTime = dashFinishTime + dashCD;
+                    moveSpeed = dashDistance/dashTime;
+                    isDashing = true;
+                }
 
             } else {
                 mover.preventMovingUpSteepSlope = false;

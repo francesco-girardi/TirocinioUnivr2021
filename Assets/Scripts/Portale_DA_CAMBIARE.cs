@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class Portale_DA_CAMBIARE : MonoBehaviour
 {
     // Start is called before the first frame update
-    public void OnTriggerEnter (Collider other){
+    public void OnTriggerStay(Collider other) {
 
-        SceneManager.LoadScene(1);
+        if(Input.GetKeyDown(KeyCode.K))
+            SceneManager.LoadScene(1);
 
     }
     
