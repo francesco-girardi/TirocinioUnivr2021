@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using Stat;
 using Events;
+using Interactions;
 
 public class PlayerLogic : CharacterStats {
 
@@ -15,6 +16,11 @@ public class PlayerLogic : CharacterStats {
         }
     }
 
+    [Tooltip("Used to define the collision with interactable objects")]
+    [Header("Player Camera")]
+    public Transform standbyCamera;
+
+    [Tooltip("Interactable objects into we are looking for")]
     [Header("View objects")]
     public Interactable focus;
 
@@ -49,6 +55,7 @@ public class PlayerLogic : CharacterStats {
     }
 
     private void Start() {
+        Cursor.lockState = CursorLockMode.Locked;
         mainCamera = Camera.main;
     }
 
@@ -62,7 +69,7 @@ public class PlayerLogic : CharacterStats {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 5)) {
+            if (Physics.Raycast(standbyCamera.position, standbyCamera.forward, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                     SetFocus(interactable);
