@@ -4,19 +4,23 @@ using UnityEngine;
 namespace Movement {
 
     public class SimpleCharacterController : MonoBehaviour {
-        public float moveSpeed = 5f;
-
-        public float speedAcceleration = 15f;
+        public float moveSpeed = 20f;
 
         public float sprintSpeedMultiplier = 2f;
 
         public float crouchSpeedMultiplier = 0.5f;
 
-        public float jumpSpeed = 8f;
+        public float dashDistance = 20f;
+
+        public float dashTime = 0.2f;
+
+        public float dashCD = 0.5f;
+
+        public float jumpSpeed = 30f;
 
         public float rotationSpeed = 720f;
 
-        public float gravity = 25f;
+        public float gravity = -60f;
 
         public CharacterMover mover;
 
@@ -31,6 +35,12 @@ namespace Movement {
         private float sprintSpeed;
 
         private float crouchSpeed;
+
+        private float dashFinishTime;
+
+        private bool isDashing = false;
+
+        private float nextDashTime = 0f;
 
         private const float minVerticalSpeed = -12f;
 
@@ -47,7 +57,6 @@ namespace Movement {
 
         private List<MoveContact> moveContacts = new List<MoveContact>(10);
 
-
         private float GroundClampSpeed => -Mathf.Tan(Mathf.Deg2Rad * mover.maxFloorAngle) * moveSpeed;
 
 
@@ -55,7 +64,6 @@ namespace Movement {
             this.baseMoveSpeed = moveSpeed;
             this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
             this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
-            this.gravity = -this.gravity;
             cameraTransform = Camera.main.transform;
         }
 
@@ -81,7 +89,7 @@ namespace Movement {
 
             SetGroundedIndicatorColor(isGrounded);
 
-            if (isGrounded && Input.GetButtonDown("Jump")) {
+            if (isGrounded && Input.GetButtonDown("Jump") && !isDashing) {
                 verticalSpeed = jumpSpeed;
                 nextUngroundedTime = -1f;
                 isGrounded = false;
@@ -96,18 +104,29 @@ namespace Movement {
 
                 if (groundDetected && IsOnMovingPlatform(groundInfo.collider, out MovingPlatform movingPlatform))
                     platformDisplacement = GetPlatformDisplacementAtPoint(movingPlatform, groundInfo.point);
-
-                if (capsule.IsCrouched)
+                
+                // STOP DASH
+                if(Time.time >= dashFinishTime){
+                    isDashing = false;
+                    moveSpeed = baseMoveSpeed;
+                }
+                
+                // CROUCH - SPRINT
+                if (capsule.IsCrouched){
                     moveSpeed = crouchSpeed;
-                else if (Input.GetButton("Sprint")) {
-                    if (moveSpeed < sprintSpeed)
-                        moveSpeed += speedAcceleration * Time.deltaTime;
-                    else
-                        moveSpeed = sprintSpeed;
-                } else
+                }else if (Input.GetButton("Sprint") && !isDashing)
+                    moveSpeed = sprintSpeed;
+                else if(!isDashing)
                     moveSpeed = baseMoveSpeed;
 
 
+                // DASH
+                if(Input.GetButtonDown("Dash") && Time.time >= nextDashTime){
+                    dashFinishTime = Time.time + dashTime;
+                    nextDashTime = dashFinishTime + dashCD;
+                    moveSpeed = dashDistance/dashTime;
+                    isDashing = true;
+                }
 
             } else {
                 mover.preventMovingUpSteepSlope = false;

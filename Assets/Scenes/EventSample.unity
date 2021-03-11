@@ -614,12 +614,23 @@ Transform:
   m_Father: {fileID: 1698463570}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &430272336
+=======
+--- !u!1 &863114401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2573877700867721438, guid: a84e11ee423eace4aac65d32b52ee82f,
+    type: 3}
+  m_PrefabInstance: {fileID: 792134270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &863114402
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 430272334}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -627,6 +638,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &692954367
+=======
+  m_GameObject: {fileID: 863114401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a0c3b36ac90d94cb3f1b1996b77c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  armor:
+    baseValue: 0
+  attackSpeed: 1
+  attackCooldown: 0
+  attackDelay: 0.6
+  damage:
+    baseValue: 0
+  focus: {fileID: 0}
+  healthBarSlider: {fileID: 281310138}
+--- !u!1 &952129188
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

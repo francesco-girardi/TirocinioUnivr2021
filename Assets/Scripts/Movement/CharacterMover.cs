@@ -316,10 +316,10 @@ namespace Movement {
         private Vector3 SlideMovement(in Vector3 movement, in Vector3 surfaceNormal, bool hasNearSurface, in Vector3 nearNormal) {
             Vector3 resultantMovement = movement;
 
-            // Only projects if it moves toward the surface.
-            if (Dot(movement, surfaceNormal) < 0f) {
-                resultantMovement = movementProjector.ProjectOnSurface(movement, surfaceNormal);
-            }
+           // Only projects if it moves toward the surface.
+           if (Dot(movement, surfaceNormal) < 0f) {
+               resultantMovement = movementProjector.ProjectOnSurface(movement, surfaceNormal);
+           }
 
             if (!hasNearSurface)
                 return resultantMovement;

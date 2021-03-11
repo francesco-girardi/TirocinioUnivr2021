@@ -276,10 +276,17 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2573877700867721439}
+<<<<<<< HEAD
   - component: {fileID: 2696093356672492920}
   - component: {fileID: 237274112311302553}
   - component: {fileID: 7944618904938769342}
   - component: {fileID: 7825019411082296169}
+=======
+  - component: {fileID: 7979231601117447354}
+  - component: {fileID: 2535496232463587962}
+  - component: {fileID: 8663125274106661280}
+  - component: {fileID: 629844195401213423}
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
   m_Layer: 0
   m_Name: MyCharacter
   m_TagString: Untagged
@@ -304,15 +311,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!114 &2696093356672492920
+=======
+--- !u!114 &7979231601117447354
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2573877700867721438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: dec5012a0d979024186193468a90f879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -328,6 +340,16 @@ MonoBehaviour:
   groundDetector: {fileID: 7825019411082296169}
   groundedIndicator: {fileID: 2573877700600175660}
 --- !u!114 &237274112311302553
+=======
+  m_Script: {fileID: 11500000, guid: 82c43ef0be7007b4a945b04dc5d84c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalOffset: 0
+  height: 2
+  crouchedHeightPercentage: 0.5
+  radius: 0.5
+--- !u!114 &2535496232463587962
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -336,6 +358,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2573877700867721438}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 82c43ef0be7007b4a945b04dc5d84c27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -344,6 +367,17 @@ MonoBehaviour:
   crouchedHeightPercentage: 0.5
   radius: 0.5
 --- !u!114 &7944618904938769342
+=======
+  m_Script: {fileID: 11500000, guid: 0bba846d4a9f87f4a8544240a447f905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFloorAngle: 45
+  preventMovingUpSteepSlope: 0
+  canClimbSteps: 0
+  maxStepHeight: 0.3
+  contactOffset: 0.01
+--- !u!114 &8663125274106661280
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -352,6 +386,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2573877700867721438}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 0bba846d4a9f87f4a8544240a447f905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -361,20 +396,48 @@ MonoBehaviour:
   maxStepHeight: 0.3
   contactOffset: 0.01
 --- !u!114 &7825019411082296169
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2573877700867721438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+=======
   m_Script: {fileID: 11500000, guid: b91f99060df8d3244ad81b3c6448785b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tolerance: 0.05
   raySpacing: 0.6
   maxRayDistance: 1
+--- !u!114 &629844195401213423
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2573877700867721438}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+<<<<<<< HEAD
+  m_Script: {fileID: 11500000, guid: b91f99060df8d3244ad81b3c6448785b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tolerance: 0.05
+  raySpacing: 0.6
+  maxRayDistance: 1
+=======
+  m_Script: {fileID: 11500000, guid: dec5012a0d979024186193468a90f879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  sprintSpeedMultiplier: 2
+  crouchSpeedMultiplier: 0.5
+  dashDistance: 20
+  dashTime: 0.2
+  dashCD: 0.5
+  jumpSpeed: 30
+  rotationSpeed: 720
+  gravity: -60
+  mover: {fileID: 2535496232463587962}
+  capsule: {fileID: 7979231601117447354}
+  groundDetector: {fileID: 8663125274106661280}
+  groundedIndicator: {fileID: 2573877700600175660}
+>>>>>>> 2166e01c72c366bd193d33d0bda5adac22320e3a
 --- !u!1 &2573877701323496191
 GameObject:
   m_ObjectHideFlags: 0
