@@ -1369,25 +1369,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 209363078791940221, guid: e96619e2efd0c4245b95d391c85dbde6,
+    - target: {fileID: 2417726698401651907, guid: e96619e2efd0c4245b95d391c85dbde6,
         type: 3}
-      propertyPath: m_Height
-      value: 0
+      propertyPath: radius
+      value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 209363078791940221, guid: e96619e2efd0c4245b95d391c85dbde6,
+    - target: {fileID: 3182337339271274795, guid: e96619e2efd0c4245b95d391c85dbde6,
         type: 3}
-      propertyPath: m_Radius
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 209363078791940221, guid: e96619e2efd0c4245b95d391c85dbde6,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2603092621543227729, guid: e96619e2efd0c4245b95d391c85dbde6,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 1
+      propertyPath: lookRadius
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4675089106812565553, guid: e96619e2efd0c4245b95d391c85dbde6,
         type: 3}
@@ -1448,16 +1438,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892198960496217466, guid: e96619e2efd0c4245b95d391c85dbde6,
-        type: 3}
-      propertyPath: m_BaseOffset
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8892198960496217466, guid: e96619e2efd0c4245b95d391c85dbde6,
-        type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e96619e2efd0c4245b95d391c85dbde6, type: 3}
