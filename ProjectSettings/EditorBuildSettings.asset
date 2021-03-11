@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Level_Selection.unity
     guid: d47dcdfda6a6d7d43ac3c1454f7a25f5
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MaroScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
