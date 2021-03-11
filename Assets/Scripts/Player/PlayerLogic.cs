@@ -29,8 +29,6 @@ public class PlayerLogic : CharacterStats {
 
     private HealthBar healthBar;
 
-    private Camera mainCamera;
-
     private string dataPath;
 
     public override void Die() {
@@ -56,7 +54,6 @@ public class PlayerLogic : CharacterStats {
 
     private void Start() {
         Cursor.lockState = CursorLockMode.Locked;
-        mainCamera = Camera.main;
     }
 
     private void Update() {
@@ -66,7 +63,6 @@ public class PlayerLogic : CharacterStats {
             RemoveFocus();
 
         if (Input.GetMouseButtonDown(1)) {
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(standbyCamera.position, standbyCamera.forward, out hit, 100)) {

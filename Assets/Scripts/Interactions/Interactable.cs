@@ -17,7 +17,15 @@ namespace Interactions {
         private bool isFocus = false;
         private bool hasInteracted = false;
 
+        /// <summary>
+        /// Do something when player interact with the object
+        /// </summary>
         public virtual void Interact() { }
+
+        /// <summary>
+        /// Do something in the Update method
+        /// </summary>
+        public virtual void DoOnUpdate() { }
 
         /// <summary>
         /// Called when the object starts being focused
@@ -45,6 +53,8 @@ namespace Interactions {
                     Interact();
                     hasInteracted = true;
                 }
+            } else if (hasInteracted) {
+                DoOnUpdate();
             }
         }
 
