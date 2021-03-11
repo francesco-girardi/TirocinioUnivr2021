@@ -311,7 +311,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2573877700867721438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82c43ef0be7007b4a945b04dc5d84c27, type: 3}
   m_Name: 
@@ -359,7 +359,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2573877700867721438}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dec5012a0d979024186193468a90f879, type: 3}
   m_Name: 
@@ -367,6 +367,9 @@ MonoBehaviour:
   moveSpeed: 20
   sprintSpeedMultiplier: 2
   crouchSpeedMultiplier: 0.5
+  dashDistance: 20
+  dashTime: 0.2
+  dashCD: 0.5
   jumpSpeed: 30
   rotationSpeed: 720
   gravity: -60

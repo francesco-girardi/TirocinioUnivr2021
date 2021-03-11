@@ -16,7 +16,7 @@ namespace Movement {
         private void Start() {
 #if UNITY_EDITOR
             // Somehow after updating to 2019.3, mouse axes sensitivity decreased, but only in the editor.
-            sensitivity *= 10f;
+            sensitivity *= 5f;
 #elif UNITY_WEBGL
             // To prevent the mouse axes not being detected when the cursor leaves the game window.
             Cursor.lockState = CursorLockMode.Locked;
@@ -30,7 +30,7 @@ namespace Movement {
 
             Quaternion worldRotation = transform.parent != null ? transform.parent.rotation : Quaternion.FromToRotation(Vector3.up, target.up);
             Quaternion cameraRotation = worldRotation * Quaternion.Euler(xRot, yRot, 0f);
-            Vector3 targetToCamera = cameraRotation * new Vector3(0f, 0f, -distance);
+            Vector3 targetToCamera = cameraRotation * new Vector3(0f, 2f, -distance);
 
             transform.SetPositionAndRotation(target.position + targetToCamera, cameraRotation);
         }
