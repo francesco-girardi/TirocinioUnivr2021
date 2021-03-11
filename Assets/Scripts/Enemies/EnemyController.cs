@@ -29,7 +29,7 @@ namespace Enemy {
 
                 if (distance <= agent.stoppingDistance) {
                     // TODO Attack player
-                    // TODO Face the player
+                    FaceTarget();
                 }
             }
         }
@@ -39,6 +39,12 @@ namespace Enemy {
             Gizmos.DrawWireSphere(transform.position, lookRadius);
         }
 
+        private void FaceTarget() {
+            Vector3 direction = (target.position - transform.position).normalized;
+
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
 
     }
 
