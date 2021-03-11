@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemy {
@@ -26,8 +24,14 @@ namespace Enemy {
         private void Update() {
             float distance = Vector3.Distance(target.position, transform.position);
 
-            if (distance <= lookRadius)
+            if (distance <= lookRadius) {
                 agent.SetDestination(target.position);
+
+                if (distance <= agent.stoppingDistance) {
+                    // TODO Attack player
+                    // TODO Face the player
+                }
+            }
         }
 
         private void OnDrawGizmos() {
