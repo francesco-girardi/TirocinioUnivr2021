@@ -4,6 +4,9 @@ using UnityEngine;
 namespace Movement {
 
     public class SimpleCharacterController : MonoBehaviour {
+
+        public Animator anim;       // Reference all'Animator altrimenti non posso prendere i valori per cambiare animazione
+
         public float moveSpeed = 20f;
 
         public float sprintSpeedMultiplier = 2f;
@@ -71,6 +74,17 @@ namespace Movement {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
 
+            if((horizontalInput != 0 || verticalInput != 0) && moveSpeed <= 20.0f)                          //
+                {                                                                                           //
+                    anim.SetBool("isWalking", true);                                                        //
+                    anim.SetBool("isDashingAnim", false);                                                   //  Se sta camminando setta il valore di "isWalking" a true in modo da attivare la transizione dell'animazione da "Idle" a "Walk" dio madonna
+                }else if ((horizontalInput != 0 || verticalInput != 0) && moveSpeed > 20.0f){               //   Ho provato a usare il tuo "isDashing", ma non gli piace se viene dichiarato sullo script -- Permette di disattivare l'azione di corsa --
+                    anim.SetBool("isDashingAnim", true);                                                    //  Permette di attivare l'azione di corsa
+                }else{                                                                                      //
+                    anim.SetBool("isDashingAnim", false);                                                   //
+                    anim.SetBool("isWalking", false);                                                       //
+                }                                                                                           //
+
             Vector3 moveDirection = CameraRelativeVectorFromInput(horizontalInput, verticalInput);
 
             UpdateMovement(moveDirection, Time.deltaTime);
@@ -107,7 +121,7 @@ namespace Movement {
                 
                 // STOP DASH
                 if(Time.time >= dashFinishTime){
-                    isDashing = false;
+                    isDashing = false; 
                     moveSpeed = baseMoveSpeed;
                 }
                 
