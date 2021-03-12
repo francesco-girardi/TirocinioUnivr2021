@@ -192,13 +192,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   - m_Name: isDashingAnim
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -258,9 +258,9 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 595b50e3b88c69544ad4c7a6ccbb99b4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 791663917ea7eca4ca81d830f4ae06aa, type: 2}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: New Float
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
