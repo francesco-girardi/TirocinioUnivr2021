@@ -6,7 +6,16 @@ namespace Stat {
     [RequireComponent(typeof(CharacterStats))]
     public class CharacterCombat : MonoBehaviour {
 
+        /// <summary>
+        /// Set true when character are in combat
+        /// </summary>
+        public bool InComabt { get; private set; }
+
         public event System.Action OnAttack;
+
+        private const float combatCalldown = 5;
+
+        private float lastAttackTime;
 
         private CharacterStats myStats;
 
@@ -23,6 +32,9 @@ namespace Stat {
 
                 myStats.attackCooldown = 1f / myStats.attackSpeed;
 
+                InComabt = true;
+                lastAttackTime = Time.time;
+
 #if UNITY_EDITOR
                 Debug.Log(targetStats.name + " takes damage: " + myStats.damage.GetValue());
 #endif
@@ -33,6 +45,9 @@ namespace Stat {
             yield return new WaitForSeconds(delay);
 
             targetStats.TakeDamage(myStats.damage.GetValue());
+
+            if (targetStats.currentHealth <= 0)
+                InComabt = false;
         }
 
         private void Start() {
@@ -41,6 +56,9 @@ namespace Stat {
 
         private void Update() {
             myStats.attackCooldown -= Time.deltaTime;
+
+            if (Time.time - lastAttackTime > combatCalldown)
+                InComabt = false;
         }
 
     }
