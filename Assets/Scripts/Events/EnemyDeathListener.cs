@@ -9,7 +9,7 @@ namespace Events.Listeners {
         }
 
         private void OnEnemyDeathEvent(EnemyDeathInfo enemyDeathInfo) {
-            Debug.Log("Player was killed by " + enemyDeathInfo.killer.name);
+            Debug.Log(enemyDeathInfo.enemy.name + " was killed by " + enemyDeathInfo.killer.name);
         }
 
     }

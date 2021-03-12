@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Stat;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemy {
@@ -12,6 +13,8 @@ namespace Enemy {
         [Tooltip("Enemy view distance")]
         public float lookRadius = 10;
 
+        private CharacterCombat enemyCombat;
+
         private Transform target;
 
         private NavMeshAgent agent;
@@ -19,6 +22,7 @@ namespace Enemy {
         private void Start() {
             target = PlayerManager.Instance.playerObject.transform;
             agent = GetComponent<NavMeshAgent>();
+            enemyCombat = GetComponent<CharacterCombat>();
         }
 
         private void Update() {
@@ -28,7 +32,7 @@ namespace Enemy {
                 agent.SetDestination(target.position);
 
                 if (distance <= agent.stoppingDistance) {
-                    // TODO Attack player
+                    AttackPlayer();
                     FaceTarget();
                 }
             }
@@ -37,6 +41,14 @@ namespace Enemy {
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, lookRadius);
+        }
+
+        private void AttackPlayer() {
+            CharacterStats playerStats = target.GetComponent<CharacterStats>();
+            if (playerStats != null)
+                enemyCombat.Attack(playerStats);
+
+            PlayerLogic.Killer = gameObject;
         }
 
         private void FaceTarget() {

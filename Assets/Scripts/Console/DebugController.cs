@@ -74,7 +74,7 @@ namespace Console {
             PLAYER_HEALTH = new DebugCommand<float>("player_health", "Set current player health into the choosen value.",
                 "player_health", (x) => {
                     Debug.Log("Player health set to: " + x);
-                    PlayerLogic.FindObjectOfType<CharacterStats>().SetCurrentHealth((int)x);
+                    FindObjectOfType<CharacterStats>().SetCurrentHealth((int)x);
 
                     if (x <= 0)
                         PlayerLogic.Killer = gameObject;

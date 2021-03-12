@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
@@ -11,6 +12,13 @@ public class PlayerManager : MonoBehaviour {
     /// Player object
     /// </summary>
     public GameObject playerObject;
+
+    /// <summary>
+    /// Called when player died
+    /// </summary>
+    public static void GameOver() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 
     private void Awake() {
         Instance = this;

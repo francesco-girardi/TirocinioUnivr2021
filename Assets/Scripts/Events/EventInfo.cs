@@ -27,6 +27,7 @@ namespace Events {
     /// Called when an enemy die
     /// </summary>
     public class EnemyDeathInfo : EventInfo {
+        public GameObject enemy;
         public GameObject killer;
     }
 }
