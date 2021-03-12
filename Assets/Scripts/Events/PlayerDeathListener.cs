@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Events {
+namespace Events.Listeners {
 
     public class PlayerDeathListener : MonoBehaviour {
 
