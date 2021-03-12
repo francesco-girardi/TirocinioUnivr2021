@@ -17,9 +17,16 @@ namespace Events {
     }
 
     /// <summary>
-    /// 
+    /// Called when player die
     /// </summary>
     public class PlayerDeathInfo : EventInfo {
+        public GameObject killer;
+    }
+
+    /// <summary>
+    /// Called when an enemy die
+    /// </summary>
+    public class EnemyDeathInfo : EventInfo {
         public GameObject killer;
     }
 }

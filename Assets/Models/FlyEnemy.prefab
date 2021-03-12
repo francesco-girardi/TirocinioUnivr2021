@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 2603092621543227729}
   - component: {fileID: 3182337339271274795}
   - component: {fileID: 2417726698401651907}
+  - component: {fileID: 3073714864164221390}
+  - component: {fileID: 1741996107854485425}
   m_Layer: 0
   m_Name: FlyEnemy
   m_TagString: Untagged
@@ -100,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b556378dfbb44d4eaba20e8bc716391, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 10
+  lookRadius: 12
 --- !u!114 &2417726698401651907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +115,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ea58c29a4062a4ab0a65653f42f919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  radius: 7
   interactionTransform: {fileID: 5757465375508457027}
+--- !u!114 &3073714864164221390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675089106812565553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 663dfc261c5e88e438471b3c7c0c6881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  armor:
+    baseValue: 0
+  attackSpeed: 1
+  attackCooldown: 0
+  attackDelay: 0.6
+  damage:
+    baseValue: 5
+--- !u!114 &1741996107854485425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675089106812565553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24e76e24a644f949a28750bfe5ca7aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1305534076259932357
 PrefabInstance:
   m_ObjectHideFlags: 0
