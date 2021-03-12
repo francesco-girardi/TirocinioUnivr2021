@@ -10,7 +10,8 @@ namespace Enemy.Fly {
 
             EnemyDeathInfo enemyDeathInfo = new EnemyDeathInfo();
             enemyDeathInfo.EventDescription = "Fly enemy death event";
-            enemyDeathInfo.killer = gameObject;
+            enemyDeathInfo.enemy = gameObject;
+            enemyDeathInfo.killer = PlayerManager.Instance.playerObject;
 
             EventSystem.Current.FireEvent(enemyDeathInfo);
 

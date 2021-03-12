@@ -13,7 +13,7 @@ namespace Stat {
         [Header("Character Combat Stats")]
         public float attackSpeed = 1f;
         public float attackCooldown = 0f;
-        public float attackDelay = .6f;
+        public float attackDelay = 0.6f;
 
         public Stat damage;
 
@@ -42,7 +42,6 @@ namespace Stat {
             value = Mathf.Clamp(value, 0, int.MaxValue);
 
             currentHealth -= value;
-            Debug.Log(transform.name + " takes " + value + " damage.");
 
             if (currentHealth <= 0)
                 Die();

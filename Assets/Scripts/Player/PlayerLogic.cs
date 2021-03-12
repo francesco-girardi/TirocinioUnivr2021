@@ -41,6 +41,8 @@ public class PlayerLogic : CharacterStats {
         EventSystem.Current.FireEvent(playerDeathInfo);
 
         Destroy(gameObject);
+
+        PlayerManager.GameOver();
     }
 
     private void Awake() {

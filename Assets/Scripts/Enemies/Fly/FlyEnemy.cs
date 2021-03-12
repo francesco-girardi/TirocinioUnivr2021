@@ -18,8 +18,8 @@ namespace Enemy.Fly {
         }
 
         private void AttackPlayer() {
-            CharacterCombat playerCombat = playerManager.GetComponent<CharacterCombat>();
-            if (playerManager != null)
+            CharacterCombat playerCombat = playerManager.playerObject.GetComponent<CharacterCombat>();
+            if (playerCombat != null)
                 playerCombat.Attack(myStats);
         }
 
@@ -27,6 +27,7 @@ namespace Enemy.Fly {
             myStats = GetComponent<CharacterStats>();
             playerManager = PlayerManager.Instance;
         }
+
     }
 
 }
