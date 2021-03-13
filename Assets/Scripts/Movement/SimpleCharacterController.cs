@@ -5,11 +5,9 @@ namespace Movement {
 
     public class SimpleCharacterController : MonoBehaviour {
 
-        public Animator anim;       // Reference all'Animator altrimenti non posso prendere i valori per cambiare animazione
-
         public float moveSpeed = 20f;
 
-        public float sprintSpeedMultiplier = 2f;
+        public float runSpeedMultiplier = 2f;
 
         public float crouchSpeedMultiplier = 0.5f;
 
@@ -25,23 +23,29 @@ namespace Movement {
 
         public float gravity = -60f;
 
-        public CharacterMover mover;
+        CharacterMover mover;
 
-        public CharacterCapsule capsule;
+        CharacterCapsule capsule;
 
-        public GroundDetector groundDetector;
-
-        public MeshRenderer groundedIndicator;
+        GroundDetector groundDetector;
 
         private float baseMoveSpeed;
 
-        private float sprintSpeed;
+        private float runSpeed;
 
         private float crouchSpeed;
 
         private float dashFinishTime;
 
         private bool isDashing = false;
+
+        private bool isRunning = false;
+
+        private bool isWalking = false;
+
+        private bool jumped = false;
+
+        private bool isGrounded = false;
 
         private float nextDashTime = 0f;
 
@@ -62,28 +66,57 @@ namespace Movement {
 
         private float GroundClampSpeed => -Mathf.Tan(Mathf.Deg2Rad * mover.maxFloorAngle) * moveSpeed;
 
+        public float BaseMoveSpeed {
+            get => baseMoveSpeed;
+        }
+
+        public float RunSpeed {
+            get => runSpeed;
+        }
+
+        public float CrouchSpeed {
+            get => crouchSpeed;
+        }
+
+        public bool IsWalking {
+            get => isWalking;
+        }
+
+        public bool IsRunning {
+            get => isRunning;
+        }
+
+        public bool IsDashing {
+            get => isDashing;
+        }
+        
+        public bool Jumped {
+            get => jumped;
+        }
+
+        public bool IsGrounded {
+            get => isGrounded;
+        }
+
+        public bool IsCrouched {
+            get => capsule.IsCrouched;
+        }
 
         private void Start() {
             this.baseMoveSpeed = moveSpeed;
-            this.sprintSpeed = baseMoveSpeed * sprintSpeedMultiplier;
+            this.runSpeed = baseMoveSpeed * runSpeedMultiplier;
             this.crouchSpeed = baseMoveSpeed * crouchSpeedMultiplier;
             cameraTransform = Camera.main.transform;
+
+            mover = GetComponent<CharacterMover>();
+            capsule = GetComponent<CharacterCapsule>();
+            groundDetector = GetComponent<GroundDetector>();
+
         }
 
         private void Update() {
             float horizontalInput = Input.GetAxis("Horizontal");
             float verticalInput = Input.GetAxis("Vertical");
-
-            if((horizontalInput != 0 || verticalInput != 0) && moveSpeed <= 20.0f)                          //
-                {                                                                                           //
-                    anim.SetBool("isWalking", true);                                                        //
-                    anim.SetBool("isDashingAnim", false);                                                   //  Se sta camminando setta il valore di "isWalking" a true in modo da attivare la transizione dell'animazione da "Idle" a "Walk" dio madonna
-                }else if ((horizontalInput != 0 || verticalInput != 0) && moveSpeed > 20.0f){               //   Ho provato a usare il tuo "isDashing", ma non gli piace se viene dichiarato sullo script -- Permette di disattivare l'azione di corsa --
-                    anim.SetBool("isDashingAnim", true);                                                    //  Permette di attivare l'azione di corsa
-                }else{                                                                                      //
-                    anim.SetBool("isDashingAnim", false);                                                   //
-                    anim.SetBool("isWalking", false);                                                       //
-                }                                                                                           //
 
             Vector3 moveDirection = CameraRelativeVectorFromInput(horizontalInput, verticalInput);
 
@@ -91,6 +124,7 @@ namespace Movement {
         }
 
         private void UpdateMovement(Vector3 moveDirection, float deltaTime) {
+
             Vector3 velocity = moveSpeed * moveDirection;
             PlatformDisplacement? platformDisplacement = null;
 
@@ -99,17 +133,20 @@ namespace Movement {
             if (IsSafelyGrounded(groundDetected, groundInfo.isOnFloor))
                 nextUngroundedTime = Time.time + timeBeforeUngrounded;
 
-            bool isGrounded = Time.time < nextUngroundedTime;
-
-            SetGroundedIndicatorColor(isGrounded);
+            isGrounded = Time.time < nextUngroundedTime;
+            // if(isGrounded)
+            //     jumped = false;
 
             if (isGrounded && Input.GetButtonDown("Jump") && !isDashing) {
                 verticalSpeed = jumpSpeed;
                 nextUngroundedTime = -1f;
                 isGrounded = false;
-            }
+                jumped = true;
+            }else
+                jumped = false;
 
             if (isGrounded) {
+
                 mover.preventMovingUpSteepSlope = true;
                 mover.canClimbSteps = true;
 
@@ -121,25 +158,21 @@ namespace Movement {
                 
                 // STOP DASH
                 if(Time.time >= dashFinishTime){
-                    isDashing = false; 
-                    moveSpeed = baseMoveSpeed;
+                    Walk();
                 }
                 
-                // CROUCH - SPRINT
-                if (capsule.IsCrouched){
-                    moveSpeed = crouchSpeed;
-                }else if (Input.GetButton("Sprint") && !isDashing)
-                    moveSpeed = sprintSpeed;
-                else if(!isDashing)
-                    moveSpeed = baseMoveSpeed;
-
+                // CROUCH - RUN
+                if (IsCrouched){
+                    Crouch();
+                }else if (Input.GetButton("Run") && !isDashing){
+                    Run();
+                }else if(!isDashing){
+                    Walk();
+                }
 
                 // DASH
                 if(Input.GetButtonDown("Dash") && Time.time >= nextDashTime){
-                    dashFinishTime = Time.time + dashTime;
-                    nextDashTime = dashFinishTime + dashCD;
-                    moveSpeed = dashDistance/dashTime;
-                    isDashing = true;
+                    Dash();
                 }
 
             } else {
@@ -174,11 +207,6 @@ namespace Movement {
 
         private bool IsSafelyGrounded(bool groundDetected, bool isOnFloor) {
             return groundDetected && isOnFloor && verticalSpeed < 0.1f;
-        }
-
-        private void SetGroundedIndicatorColor(bool isGrounded) {
-            if (groundedIndicator != null)
-                groundedIndicator.material.color = isGrounded ? Color.green : Color.blue;
         }
 
         private bool IsOnMovingPlatform(Collider groundCollider, out MovingPlatform platform) {
@@ -221,6 +249,41 @@ namespace Movement {
         private void ApplyPlatformDisplacement(PlatformDisplacement platformDisplacement) {
             transform.Translate(platformDisplacement.deltaPosition, Space.World);
             transform.Rotate(0f, platformDisplacement.deltaUpRotation, 0f, Space.Self);
+        }
+
+        private void Walk(){
+            isWalking = true;
+            isRunning = false;
+            isDashing = false;
+
+            moveSpeed = baseMoveSpeed;
+        }
+        private void Run(){
+            isWalking = false;
+            isRunning = true;
+            isDashing = false;
+
+            moveSpeed = runSpeed;
+            
+        }
+        private void Dash(){
+            isWalking = false;
+            isRunning = false;
+            isDashing = true;
+
+            dashFinishTime = Time.time + dashTime;
+            nextDashTime = dashFinishTime + dashCD;
+            moveSpeed = dashDistance/dashTime;
+            
+        }
+
+        private void Crouch(){
+            isWalking = false;
+            isRunning = false;
+            isDashing = false;
+
+            moveSpeed = crouchSpeed;
+
         }
 
         private struct PlatformDisplacement {
