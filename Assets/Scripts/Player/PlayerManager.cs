@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Audio;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
@@ -18,6 +19,7 @@ public class PlayerManager : MonoBehaviour {
     /// </summary>
     public static void GameOver() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SoundManager.Instance.PlaySound("explosion_01");
     }
 
     private void Awake() {

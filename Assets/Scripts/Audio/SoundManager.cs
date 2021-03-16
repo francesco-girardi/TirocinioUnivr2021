@@ -8,7 +8,7 @@ namespace Audio {
         /// <br>Instance of SoundManager give you access to all public methods.</br>
         /// ( <b>There can only be one</b> )
         /// </summary>
-        public SoundManager Instance { get; private set; }
+        public static SoundManager Instance { get; private set; }
 
         /// <summary>
         /// All game sounds

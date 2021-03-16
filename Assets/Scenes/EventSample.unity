@@ -1075,7 +1075,13 @@ MonoBehaviour:
   sounds:
   - soundName: background
     soundClip: {fileID: 8300000, guid: 43ef111854d7ae444ac9fba824636cec, type: 3}
-    soundVolume: 0.1
+    soundVolume: 0.025
+    soundPith: 1
+    soundLoop: 1
+    audioSource: {fileID: 0}
+  - soundName: explosion_01
+    soundClip: {fileID: 8300000, guid: 168dc94aa7e5db44b8e0eca7eeee5cdb, type: 3}
+    soundVolume: 1
     soundPith: 1
     soundLoop: 0
     audioSource: {fileID: 0}
