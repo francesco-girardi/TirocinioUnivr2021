@@ -18,7 +18,7 @@ namespace Audio {
         public Sound[] sounds;
 
         /// <summary>
-        /// Find and play a sound in game
+        /// Find and play a sound in game 
         /// </summary>
         /// <param name="soundName"></param>
         public void PlaySound(string soundName) {
