@@ -278,7 +278,7 @@ namespace Movement {
         }
 
         private void Crouch(){
-            isWalking = false;
+            isWalking = true;
             isRunning = false;
             isDashing = false;
 
