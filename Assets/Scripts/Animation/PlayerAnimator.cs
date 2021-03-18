@@ -37,7 +37,7 @@ public class PlayerAnimator : CharacterAnimator
 
         anim.SetFloat("walkSpeed", baseMoveSpeed/1.8f);
         anim.SetFloat("runSpeed", sprintSpeed/18f);
-        // anim.SetFloat("crouchSpeed", crouchSpeed/10000000f);    // DA IMPOSTARE IL NUMERO POI
+        anim.SetFloat("crouchSpeed", crouchSpeed/2.5f);    // DA IMPOSTARE IL NUMERO POI
 
         isWalking = controller.IsWalking;
         isRunning = controller.IsRunning;
@@ -50,6 +50,8 @@ public class PlayerAnimator : CharacterAnimator
             isWalking = false;
             isRunning = false;
         }
+
+        Debug.Log(isDashing);
 
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isRunning", isRunning);
