@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Audio {
 
@@ -17,6 +18,8 @@ namespace Audio {
         [Tooltip("Array of game sounds")]
         public Sound[] sounds;
 
+        [Tooltip("Game audio mixer")]
+        public AudioMixer audioMixer;
         /// <summary>
         /// Find and play a sound in game 
         /// </summary>
@@ -42,8 +45,11 @@ namespace Audio {
 
             DontDestroyOnLoad(gameObject);
 
+            AudioMixerGroup[] audioMixerGroup = audioMixer.FindMatchingGroups("Master");
+
             foreach (Sound sound in sounds) {
                 sound.audioSource = gameObject.AddComponent<AudioSource>();
+                sound.audioSource.outputAudioMixerGroup = audioMixerGroup[GetMixerIndex(sound.mixerName)];
                 sound.audioSource.clip = sound.soundClip;
                 sound.audioSource.volume = sound.soundVolume;
                 sound.audioSource.pitch = sound.soundPith;
@@ -51,8 +57,21 @@ namespace Audio {
             }
         }
 
-        private void Start() {
-            PlaySound("background");
+        private int GetMixerIndex(Sound.MixerName mixerName) {
+            int index = 0;
+
+            switch (mixerName) {
+                case Sound.MixerName.Music:
+                    index = 1;
+                    break;
+                case Sound.MixerName.Effects:
+                    index = 2;
+                    break;
+                default:
+                    break;
+            }
+
+            return index;
         }
 
     }

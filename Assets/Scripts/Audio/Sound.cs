@@ -5,6 +5,8 @@ namespace Audio {
     [System.Serializable]
     public class Sound {
 
+        public enum MixerName { Master, Music, Effects };
+
         [Header("Audio Info")]
         [Tooltip("Sound name")]
         public string soundName;
@@ -23,8 +25,12 @@ namespace Audio {
         [Tooltip("Can this sound loop")]
         public bool soundLoop;
 
+        [Tooltip("Name of mixer group of that sound")]
+        public MixerName mixerName = new MixerName();
+
         [HideInInspector]
         public AudioSource audioSource;
+
     }
 
 }
