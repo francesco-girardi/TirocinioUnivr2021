@@ -51,8 +51,6 @@ public class PlayerAnimator : CharacterAnimator
             isRunning = false;
         }
 
-        Debug.Log(isDashing);
-
         anim.SetBool("isWalking", isWalking);
         anim.SetBool("isRunning", isRunning);
         anim.SetBool("isCrouched", isCrouched);

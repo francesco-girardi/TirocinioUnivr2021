@@ -54,17 +54,17 @@ public class PlayerLogic : CharacterStats {
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    private void Start() {
+    protected override void Start() {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Update() {
+    protected override void Update() {
         healthBar.SetHealth(currentHealth);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
             RemoveFocus();
 
-        if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
 
             if (Physics.Raycast(standbyCamera.position, standbyCamera.forward, out hit, 100)) {

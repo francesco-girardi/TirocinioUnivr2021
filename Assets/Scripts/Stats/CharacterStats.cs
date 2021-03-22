@@ -54,8 +54,16 @@ namespace Stat {
             Debug.Log(transform.name + " died.");
         }
 
-        void Awake() {
+        private void Awake() {
             currentHealth = maxHealth;
+        }
+
+        protected virtual void Start() {
+
+        }
+
+        protected virtual void Update() {
+
         }
     }
 

@@ -39,6 +39,15 @@ namespace Stat {
             if (value != 0)
                 modifiers.Remove(value);
         }
+
+        /// <summary>
+        /// Set current stat base value
+        /// </summary>
+        /// <param name="value"></param>
+        public void SetBaseValue(float value) {
+            baseValue = (int)value;
+        }
+
     }
 
 }
