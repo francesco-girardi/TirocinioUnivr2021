@@ -11,6 +11,9 @@ namespace Audio {
         /// </summary>
         public static SoundManager Instance { get; private set; }
 
+        [Tooltip("Background audio that has to be analyzed")]
+        public AudioSource backgroundMusic;
+
         /// <summary>
         /// All game sounds
         /// </summary>
@@ -20,6 +23,7 @@ namespace Audio {
 
         [Tooltip("Game audio mixer")]
         public AudioMixer audioMixer;
+
         /// <summary>
         /// Find and play a sound in game 
         /// </summary>
@@ -31,6 +35,23 @@ namespace Audio {
                 Debug.LogError("File " + s.soundName + " not found!");
                 return;
             }
+
+            s.audioSource.Play();
+        }
+
+        /// <summary>
+        /// Find and play as background music a sound in game
+        /// </summary>
+        /// <param name="soundName"></param>
+        public void ChangeBackground(string soundName) {
+            Sound s = System.Array.Find(sounds, sound => sound.soundName == soundName);
+
+            if (s == null) {
+                Debug.LogError("File " + s.soundName + " not found!");
+                return;
+            }
+
+            s.audioSource = backgroundMusic;
 
             s.audioSource.Play();
         }
