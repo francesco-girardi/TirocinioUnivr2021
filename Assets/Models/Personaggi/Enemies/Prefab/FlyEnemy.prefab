@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 12
+  canDoDamage: 0
 --- !u!114 &2417726698401651907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +264,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Graphics
       objectReference: {fileID: 0}
+    - target: {fileID: 8743813690021804245, guid: 15148b5b582e90749a637f536364f1d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6595a1b9a871fc941bab920da416831f, type: 2}
+    - target: {fileID: 8743813690021804245, guid: 15148b5b582e90749a637f536364f1d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 765be18014f9805458d782f060dd9470, type: 2}
+    - target: {fileID: 8743813690021804245, guid: 15148b5b582e90749a637f536364f1d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f0c3b1e0963dcb4dbd231f159133ca7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15148b5b582e90749a637f536364f1d0, type: 3}
 --- !u!1 &2224595158738478484 stripped
