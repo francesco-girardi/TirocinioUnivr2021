@@ -40,6 +40,21 @@ namespace Audio {
         }
 
         /// <summary>
+        /// Find and stop a sound in game 
+        /// </summary>
+        /// <param name="soundName"></param>
+        public void StopSound(string soundName) {
+            Sound s = System.Array.Find(sounds, sound => sound.soundName == soundName);
+
+            if (s == null) {
+                Debug.LogError("File " + s.soundName + " not found!");
+                return;
+            }
+
+            s.audioSource.Stop();
+        }
+
+        /// <summary>
         /// Find and play as background music a sound in game
         /// </summary>
         /// <param name="soundName"></param>

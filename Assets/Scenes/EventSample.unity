@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b07be2654e9f104485962ec310964f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1534328573}
 --- !u!1 &281310136
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fc03865a209c74db83ad0c46c6fa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 2044817870}
   distance: 5
   sensitivity: 100
 --- !u!1 &1053467008
@@ -710,7 +710,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053467008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26475525, y: -2.1206198, z: 1.1979704}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 987420328}
@@ -1212,6 +1212,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1534328573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9146540876050948714, guid: 547055d2e7c753540bf299b930423028,
+    type: 3}
+  m_PrefabInstance: {fileID: 2044817869}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1621780919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8569292619521038693, guid: 4fcf18c6e3abdf24290ad344171a2272,
@@ -1289,6 +1295,13 @@ MonoBehaviour:
     soundLoop: 1
     mixerName: 2
     audioSource: {fileID: 0}
+  - soundName: Footsteps_Tile_Walk_01
+    soundClip: {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
+    soundVolume: 1
+    soundPitch: 1
+    soundLoop: 1
+    mixerName: 2
+    audioSource: {fileID: 0}
   audioMixer: {fileID: 24100000, guid: ebb3a4fcaa5889f44903c26f7b1c0159, type: 2}
 --- !u!4 &1698690931
 Transform:
@@ -1298,7 +1311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698690929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.264755, y: 8.12062, z: -1.1979704}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 926960162}
@@ -1593,7 +1606,7 @@ PrefabInstance:
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
@@ -1608,17 +1621,17 @@ PrefabInstance:
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
@@ -1666,7 +1679,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105865196}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1676,7 +1689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 640, y: 360}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1305534076733639791
