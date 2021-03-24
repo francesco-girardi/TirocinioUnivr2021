@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Movement;
-using Audio;
 
 namespace Animation.Player {
     public class PlayerAnimator : CharacterAnimator {
-        Animator anim;
-        SimpleCharacterController controller;
+
+        [SerializeField]
+        private AudioClip clip;
+
+        private AudioSource audioSource;
+
+        private Animator anim;
+
+        private SimpleCharacterController controller;
+
         private float baseMoveSpeed;
         private float sprintSpeed;
         private float crouchSpeed;
@@ -17,6 +22,10 @@ namespace Animation.Player {
         private bool isDashing;
         private bool jumped;
         private bool isGrounded;
+
+        private void Awake() {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         // Start is called before the first frame update
         protected override void Start() {
@@ -56,5 +65,11 @@ namespace Animation.Player {
             anim.SetBool("jumped", jumped);
             anim.SetBool("isGrounded", isGrounded);
         }
+
+        private void Step() {
+            audioSource.PlayOneShot(clip);
+        }
+
     }
+
 }
