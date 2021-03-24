@@ -20,7 +20,7 @@ namespace Audio {
 
         [Tooltip("Pith for this audio clip")]
         [Range(-3f, 3f)]
-        public float soundPith = 1f;
+        public float soundPitch = 1f;
 
         [Tooltip("Can this sound loop")]
         public bool soundLoop;

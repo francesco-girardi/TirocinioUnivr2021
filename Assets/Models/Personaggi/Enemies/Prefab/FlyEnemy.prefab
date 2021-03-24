@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 5757465375508457027}
   - component: {fileID: 8892198960496217466}
   - component: {fileID: 209363078791940221}
+  - component: {fileID: 1409516848222893590}
   - component: {fileID: 2603092621543227729}
   - component: {fileID: 3182337339271274795}
   - component: {fileID: 2417726698401651907}
@@ -38,7 +39,7 @@ GameObject:
   - component: {fileID: 8945347749486737180}
   m_Layer: 0
   m_Name: FlyEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +52,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4675089106812565553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11, y: 50, z: 72}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1555018602935582510}
@@ -67,17 +68,17 @@ NavMeshAgent:
   m_GameObject: {fileID: 4675089106812565553}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 5
+  m_Radius: 3.75
   m_Speed: 5
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 7
+  m_StoppingDistance: 4
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 2
+  m_Height: 1
+  m_BaseOffset: 4.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &209363078791940221
@@ -90,10 +91,24 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 4
-  m_Height: 0
-  m_Direction: 1
+  m_Radius: 1.4
+  m_Height: 8
+  m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &1409516848222893590
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675089106812565553}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 10
+  m_Direction: 0
+  m_Center: {x: 0, y: 0.5, z: -2}
 --- !u!54 &2603092621543227729
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -135,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ea58c29a4062a4ab0a65653f42f919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 7
+  radius: 4
   interactionTransform: {fileID: 5757465375508457027}
 --- !u!114 &3073714864164221390
 MonoBehaviour:
@@ -154,7 +169,7 @@ MonoBehaviour:
     baseValue: 0
   attackSpeed: 1
   attackCooldown: 0
-  attackDelay: 0.3
+  attackDelay: 0.7
   damage:
     baseValue: 5
 --- !u!114 &1741996107854485425

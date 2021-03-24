@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Enemy;
+using System.Collections;
 using UnityEngine;
 
 namespace Stat {
@@ -19,6 +20,8 @@ namespace Stat {
 
         private CharacterStats myStats;
 
+        private EnemyController enemyController;
+
         /// <summary>
         /// Attack other characters in game
         /// </summary>
@@ -34,17 +37,25 @@ namespace Stat {
 
                 InComabt = true;
                 lastAttackTime = Time.time;
-
-#if UNITY_EDITOR
-                Debug.Log(targetStats.name + " takes damage: " + myStats.damage.GetValue());
-#endif
             }
         }
 
         private IEnumerator DoDamage(CharacterStats targetStats, float delay) {
             yield return new WaitForSeconds(delay);
 
-            targetStats.TakeDamage(myStats.damage.GetValue());
+            if (enemyController != null && enemyController.canDoDamage) {
+                targetStats.TakeDamage(myStats.damage.GetValue());
+
+#if UNITY_EDITOR
+                Debug.Log(targetStats.name + " takes damage: " + myStats.damage.GetValue());
+#endif
+            } else {
+                targetStats.TakeDamage(myStats.damage.GetValue());
+
+#if UNITY_EDITOR
+                Debug.Log(targetStats.name + " takes damage: " + myStats.damage.GetValue());
+#endif
+            }
 
             if (targetStats.currentHealth <= 0)
                 InComabt = false;
@@ -52,6 +63,9 @@ namespace Stat {
 
         private void Start() {
             myStats = GetComponent<CharacterStats>();
+
+            if (gameObject.tag == "Enemy")
+                enemyController = GetComponent<EnemyController>();
         }
 
         private void Update() {

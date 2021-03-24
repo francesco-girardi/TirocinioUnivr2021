@@ -73,7 +73,7 @@ namespace Audio {
                 sound.audioSource.outputAudioMixerGroup = audioMixerGroup[GetMixerIndex(sound.mixerName)];
                 sound.audioSource.clip = sound.soundClip;
                 sound.audioSource.volume = sound.soundVolume;
-                sound.audioSource.pitch = sound.soundPith;
+                sound.audioSource.pitch = sound.soundPitch;
                 sound.audioSource.loop = sound.soundLoop;
             }
         }

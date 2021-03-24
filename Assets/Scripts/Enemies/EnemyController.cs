@@ -13,6 +13,9 @@ namespace Enemy {
         [Tooltip("Enemy view distance")]
         public float lookRadius = 10;
 
+        [HideInInspector]
+        public bool canDoDamage;
+
         private CharacterCombat enemyCombat;
 
         private Transform target;
@@ -31,10 +34,13 @@ namespace Enemy {
             if (distance <= lookRadius) {
                 agent.SetDestination(target.position);
 
+                FaceTarget();
+
                 if (distance <= agent.stoppingDistance) {
                     AttackPlayer();
-                    FaceTarget();
-                }
+                    canDoDamage = true;
+                } else
+                    canDoDamage = false;
             }
         }
 
