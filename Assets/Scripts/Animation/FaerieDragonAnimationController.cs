@@ -1,8 +1,6 @@
 ﻿
-namespace Animation.Enemy.Fly {
-
-    public class FlyEnemyAnimationController : CharacterAnimator {
-
+namespace Animation.FaerieDragon {
+    public class FaerieDragonAnimationController : CharacterAnimator {
         protected override void Start() {
             base.Start();
         }
@@ -18,3 +16,5 @@ namespace Animation.Enemy.Fly {
     }
 
 }
+
+
