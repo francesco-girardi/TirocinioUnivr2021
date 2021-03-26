@@ -4,8 +4,15 @@ using Movement;
 namespace Animation.Player {
     public class PlayerAnimator : CharacterAnimator {
 
+        [Header("Audio Info")]
         [SerializeField]
-        private AudioClip clip;
+        private AudioClip walkClip;
+
+        [SerializeField]
+        private AudioClip runClip;
+
+        [SerializeField]
+        private AudioClip jumpClip;
 
         private AudioSource audioSource;
 
@@ -67,9 +74,16 @@ namespace Animation.Player {
         }
 
         private void Step() {
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(walkClip);
         }
 
+        private void RunStep() {
+            audioSource.PlayOneShot(runClip);
+        }
+
+        private void JumpStep() {
+            audioSource.PlayOneShot(jumpClip);
+        }
     }
 
 }
