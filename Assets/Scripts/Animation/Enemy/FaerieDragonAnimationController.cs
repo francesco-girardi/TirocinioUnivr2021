@@ -1,5 +1,5 @@
 ﻿
-namespace Animation.FaerieDragon {
+namespace Animation.Enemy.FaerieDragon {
     public class FaerieDragonAnimationController : CharacterAnimator {
         protected override void Start() {
             base.Start();

@@ -2,10 +2,10 @@
 using Stat;
 using UnityEngine;
 
-namespace Enemy.FaerieDragon {
+namespace Enemy.Slime.ThunderSlime {
 
     [RequireComponent(typeof(CharacterStats))]
-    public class FaerieDragonEnemy : Interactable {
+    public class ThunderSlimeEnemy : Interactable {
 
         private CharacterStats myStats;
 
@@ -27,7 +27,7 @@ namespace Enemy.FaerieDragon {
             myStats = GetComponent<CharacterStats>();
             playerManager = PlayerManager.Instance;
         }
+
     }
 
 }
-
