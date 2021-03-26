@@ -10,6 +10,10 @@ namespace Animation.Enemy.Brugon {
             base.Start();
         }
 
+        protected override void OnEnemyMove() {
+            base.OnEnemyMove();
+        }
+
         protected override void OnAttack() {
             base.OnAttack();
         }

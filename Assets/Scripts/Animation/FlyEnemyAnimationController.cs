@@ -8,6 +8,10 @@ namespace Animation.Enemy.Fly {
             base.Start();
         }
 
+        protected override void OnEnemyMove() {
+
+        }
+
         protected override void OnAttack() {
             base.OnAttack();
         }

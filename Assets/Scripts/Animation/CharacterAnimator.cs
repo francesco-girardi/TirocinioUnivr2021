@@ -1,4 +1,5 @@
-﻿using Stat;
+﻿using Enemy;
+using Stat;
 using UnityEngine;
 
 namespace Animation {
@@ -7,13 +8,22 @@ namespace Animation {
 
         protected Animator animator;
 
+        protected EnemyController enemyController;
+
         protected CharacterCombat characterCombat;
 
         protected virtual void Start() {
             animator = GetComponentInChildren<Animator>();
 
+            enemyController = GetComponent<EnemyController>();
+            enemyController.onEnemyMove += OnEnemyMove;
+
             characterCombat = GetComponent<CharacterCombat>();
             characterCombat.OnAttack += OnAttack;
+        }
+
+        protected virtual void OnEnemyMove() {
+            animator.SetTrigger("isMoving");
         }
 
         protected virtual void OnAttack() {

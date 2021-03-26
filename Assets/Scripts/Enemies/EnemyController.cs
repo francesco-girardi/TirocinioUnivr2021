@@ -16,6 +16,8 @@ namespace Enemy {
         [HideInInspector]
         public bool canDoDamage;
 
+        public event System.Action onEnemyMove;
+
         private CharacterCombat enemyCombat;
 
         private Transform target;
@@ -33,6 +35,9 @@ namespace Enemy {
 
             if (distance <= lookRadius) {
                 agent.SetDestination(target.position);
+
+                if (onEnemyMove != null)
+                    onEnemyMove();
 
                 FaceTarget();
 
