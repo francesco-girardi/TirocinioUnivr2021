@@ -166,6 +166,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1534328573}
+--- !u!1 &274351606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 510797997784303701, guid: 4765c039e0a07ee448b2a79ead974f38,
+    type: 3}
+  m_PrefabInstance: {fileID: 949676033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &274351615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274351606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d691f62f963424296ae140bc85fc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &281310136
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,32 +599,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8137368927164531313, guid: 4765c039e0a07ee448b2a79ead974f38,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137368927164531313, guid: 4765c039e0a07ee448b2a79ead974f38,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137368927164531313, guid: 4765c039e0a07ee448b2a79ead974f38,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137368927164531313, guid: 4765c039e0a07ee448b2a79ead974f38,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137368927164531313, guid: 4765c039e0a07ee448b2a79ead974f38,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2980583299110635657, guid: 4765c039e0a07ee448b2a79ead974f38, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4765c039e0a07ee448b2a79ead974f38, type: 3}
 --- !u!4 &949676034 stripped
 Transform:
