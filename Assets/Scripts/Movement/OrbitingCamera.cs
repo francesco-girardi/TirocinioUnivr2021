@@ -43,7 +43,7 @@ namespace Movement
             Vector3 desiredPosition = target.position + targetToCamera;
             Vector3 position = target.position + cameraRotation * new Vector3(0f, 0f, 0f);
             if(Physics.Linecast(position, desiredPosition, out RaycastHit hit))
-                distance = Mathf.Clamp(hit.distance-1f, distanceMinMax.x, distanceMinMax.y);
+                distance = Mathf.Clamp(hit.distance, distanceMinMax.x, distanceMinMax.y);
             else
                 distance = distanceMinMax.y;
             
