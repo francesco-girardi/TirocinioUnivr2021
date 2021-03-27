@@ -72,6 +72,7 @@ namespace Audio {
         }
 
         private void Awake() {
+            #region Singleton
             if (Instance == null)
                 Instance = this;
             else {
@@ -80,7 +81,8 @@ namespace Audio {
             }
 
             DontDestroyOnLoad(gameObject);
-
+            #endregion
+            
             AudioMixerGroup[] audioMixerGroup = audioMixer.FindMatchingGroups("Master");
 
             foreach (Sound sound in sounds) {

@@ -7,12 +7,16 @@ public class PlayerManager : MonoBehaviour {
     /// <summary>
     /// Player instance
     /// </summary>
-    public static PlayerManager Instance;
+    public static PlayerManager Instance { get; private set; }
 
     /// <summary>
     /// Player object
     /// </summary>
+    [Header("Player Info")]
+    [Tooltip("Player object to spawn")]
     public GameObject playerObject;
+
+    private GameObject spawnLocation;
 
     /// <summary>
     /// Called when player died
@@ -22,8 +26,32 @@ public class PlayerManager : MonoBehaviour {
         SoundManager.Instance.PlaySound("explosion_01");
     }
 
+    /// <summary>
+    /// Spawn a Player in the scene
+    /// </summary>
+    public static void SpawnPlayer() {
+        Instance.playerObject.transform.name = "Player";
+        Instantiate(Instance.playerObject, Instance.spawnLocation.transform.position,
+            Instance.spawnLocation.transform.rotation);
+    }
+
     private void Awake() {
-        Instance = this;
+        #region Singleton
+        if (Instance == null)
+            Instance = this;
+        else {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+        #endregion
+
+        spawnLocation = GameObject.FindGameObjectWithTag("PlayerSpawn");
+    }
+
+    private void Start() {
+        SpawnPlayer();
     }
 
 }

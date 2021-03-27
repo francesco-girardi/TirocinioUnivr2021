@@ -1,11 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
-namespace Movement
-{
+namespace Movement {
 
-    public class OrbitingCamera : MonoBehaviour
-    {
-        public Transform target;
+    public class OrbitingCamera : MonoBehaviour {
+        private Transform target;
 
         public float distance = 5f;
 
@@ -17,8 +16,17 @@ namespace Movement
 
         Vector2 distanceMinMax;
 
-        private void Start()
-        {
+        private void Awake() {
+            StartCoroutine(targetPlayer());
+        }
+
+        private IEnumerator targetPlayer() {
+            yield return new WaitForSeconds(1);
+
+            target = FindObjectOfType<PlayerLogic>().transform;
+        }
+
+        private void Start() {
             distanceMinMax = new Vector2(0.5f, distance);
 
 #if UNITY_EDITOR
@@ -30,8 +38,10 @@ namespace Movement
 #endif
         }
 
-        private void LateUpdate()
-        {
+        private void LateUpdate() {
+            if (target == null)
+                return;
+
             yRot += Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
             xRot -= Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
             xRot = Mathf.Clamp(xRot, -75f, 75f);
@@ -42,11 +52,11 @@ namespace Movement
             Vector3 targetToCamera = cameraRotation * new Vector3(0f, 0f, -distanceMinMax.y);
             Vector3 desiredPosition = target.position + targetToCamera;
             Vector3 position = target.position + cameraRotation * new Vector3(0f, 0f, 0f);
-            if(Physics.Linecast(position, desiredPosition, out RaycastHit hit))
+            if (Physics.Linecast(position, desiredPosition, out RaycastHit hit))
                 distance = Mathf.Clamp(hit.distance, distanceMinMax.x, distanceMinMax.y);
             else
                 distance = distanceMinMax.y;
-            
+
             position = target.position + cameraRotation * new Vector3(0f, 0f, -distance);
 
             transform.SetPositionAndRotation(position, cameraRotation);
