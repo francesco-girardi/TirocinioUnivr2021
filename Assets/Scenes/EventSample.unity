@@ -1864,46 +1864,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6192553434118214580}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &859591522299648333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6781787060973226745, guid: 5df7153559b2d5f4dbec406d23738475,
-    type: 3}
-  m_PrefabInstance: {fileID: 6192553434118214580}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &859591522299648334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859591522299648333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec164ea52251f6d46b9f6321c819fd3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  armor:
-    baseValue: 0
-  attackSpeed: 1
-  attackCooldown: 0
-  attackDelay: 0.6
-  damage:
-    baseValue: 0
---- !u!114 &859591522299648335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859591522299648333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb377d9eed108c44ea4ddade68a0387d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 3
-  interactionTransform: {fileID: 46779013995938807}
 --- !u!1001 &1305534076733639791
 PrefabInstance:
   m_ObjectHideFlags: 0
