@@ -1,4 +1,5 @@
 ﻿using Stat;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,7 +26,7 @@ namespace Enemy {
         private NavMeshAgent agent;
 
         private void Start() {
-            target = PlayerManager.Instance.playerObject.transform;
+            StartCoroutine(TargetPlayer());
             agent = GetComponent<NavMeshAgent>();
             enemyCombat = GetComponent<CharacterCombat>();
         }
@@ -67,6 +68,12 @@ namespace Enemy {
 
             Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
+        }
+
+        private IEnumerator TargetPlayer() {
+            yield return new WaitForSeconds(1);
+
+            target = PlayerManager.Instance.playerObject.transform;
         }
 
     }
