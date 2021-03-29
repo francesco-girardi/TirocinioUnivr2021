@@ -26,10 +26,15 @@ public class PlayerManager : MonoBehaviour {
         SoundManager.Instance.PlaySound("explosion_01");
     }
 
+
+    public void SetSpawnLocation(GameObject spawnLocation) {
+        this.spawnLocation = spawnLocation;
+    }
+
     /// <summary>
     /// Spawn a Player in the scene
     /// </summary>
-    public static void SpawnPlayer() {
+    public void SpawnPlayer() {
         Instance.playerObject.transform.name = "Player";
         Instantiate(Instance.playerObject, Instance.spawnLocation.transform.position,
             Instance.spawnLocation.transform.rotation);
@@ -48,10 +53,6 @@ public class PlayerManager : MonoBehaviour {
         #endregion
 
         spawnLocation = GameObject.FindGameObjectWithTag("PlayerSpawn");
-    }
-
-    private void Start() {
-        SpawnPlayer();
     }
 
 }
