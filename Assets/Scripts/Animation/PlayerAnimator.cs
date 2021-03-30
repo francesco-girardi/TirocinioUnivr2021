@@ -6,13 +6,12 @@ namespace Animation.Player {
 
         [Header("Audio Info")]
         [SerializeField]
-        private AudioClip walkClip;
+        [Tooltip("Step sounds on Tile Terrain")]
+        private AudioClip[] tileClips = new AudioClip[3];
 
         [SerializeField]
-        private AudioClip runClip;
-
-        [SerializeField]
-        private AudioClip jumpClip;
+        [Tooltip("Step sounds on Grass Terrain")]
+        private AudioClip[] grassClips = new AudioClip[3];
 
         private AudioSource audioSource;
 
@@ -74,15 +73,45 @@ namespace Animation.Player {
         }
 
         private void Step() {
-            audioSource.PlayOneShot(walkClip);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
+
+            GameObject terrain = hit.collider.gameObject;
+
+            if (terrain.tag == "Tile")
+                audioSource.PlayOneShot(tileClips[0]);
+            else if (terrain.tag == "Grass")
+                audioSource.PlayOneShot(grassClips[0]);
+            else
+                return;
         }
 
         private void RunStep() {
-            audioSource.PlayOneShot(runClip);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
+
+            GameObject terrain = hit.collider.gameObject;
+
+            if (terrain.tag == "Tile")
+                audioSource.PlayOneShot(tileClips[1]);
+            else if (terrain.tag == "Grass")
+                audioSource.PlayOneShot(grassClips[1]);
+            else
+                return;
         }
 
         private void JumpStep() {
-            audioSource.PlayOneShot(jumpClip);
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
+
+            GameObject terrain = hit.collider.gameObject;
+
+            if (terrain.tag == "Tile")
+                audioSource.PlayOneShot(tileClips[2]);
+            else if (terrain.tag == "Grass")
+                audioSource.PlayOneShot(grassClips[2]);
+            else
+                return;
         }
     }
 

@@ -1069,9 +1069,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de58a6fae9d606540a5510dbb2cfca53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkClip: {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
-  runClip: {fileID: 8300000, guid: 6fd6a0bfcd6035f45b094bcbf454c851, type: 3}
-  jumpClip: {fileID: 8300000, guid: 76ca37be67e011945a55c4d804b643b2, type: 3}
+  tileClips:
+  - {fileID: 8300000, guid: b993df4a93c1d304ab19d8b2eb88c9a5, type: 3}
+  - {fileID: 8300000, guid: 6fd6a0bfcd6035f45b094bcbf454c851, type: 3}
+  - {fileID: 8300000, guid: 76ca37be67e011945a55c4d804b643b2, type: 3}
+  grassClips:
+  - {fileID: 8300000, guid: 551d550ab98e3cc4bb7793e752fe8628, type: 3}
+  - {fileID: 8300000, guid: 9a30499e47789df48aa9bdb1ec7b0982, type: 3}
+  - {fileID: 8300000, guid: 6aeefb601c305f64487cebdfacae5b6c, type: 3}
 --- !u!1 &3425676710658172276
 GameObject:
   m_ObjectHideFlags: 0
