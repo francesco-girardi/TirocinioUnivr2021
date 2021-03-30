@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Stat;
 using Events;
 using Interactions;
+using Data;
 
 public class PlayerLogic : CharacterStats {
 
@@ -24,8 +25,7 @@ public class PlayerLogic : CharacterStats {
     [Header("View objects")]
     public Interactable focus;
 
-    [Header("Healthbar Info")]
-    public Slider healthBarSlider;
+    private Slider healthBarSlider;
 
     private HealthBar healthBar;
 
@@ -50,15 +50,27 @@ public class PlayerLogic : CharacterStats {
 
         SetCurrentHealth(maxHealth);
 
+        healthBarSlider = GameObject.FindGameObjectWithTag("HealthBarUI").GetComponent<Slider>();
+
         healthBar = new HealthBar(healthBarSlider);
         healthBar.SetMaxHealth(maxHealth);
     }
 
     protected override void Start() {
+        PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
+
+        if (playerDatas != null)
+            SetCurrentHealth(playerDatas.playerHealth);
+
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     protected override void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            Debug.Log("PlayerLogic :: Saving datas.");
+            SavePlayerData();
+        }
+
         healthBar.SetHealth(currentHealth);
 
         if (Input.GetMouseButtonDown(1))
@@ -76,6 +88,11 @@ public class PlayerLogic : CharacterStats {
 
         if (currentHealth <= 0)
             Die();
+    }
+
+    private void SavePlayerData() {
+        PlayerDatas playerDatas = new PlayerDatas(currentHealth);
+        SavingSystem.PlayerToJSON(playerDatas, dataPath);
     }
 
     private void SetFocus(Interactable interactable) {

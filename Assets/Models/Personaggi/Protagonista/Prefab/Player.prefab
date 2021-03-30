@@ -2899,7 +2899,6 @@ MonoBehaviour:
     baseValue: 5
   standbyCamera: {fileID: 4344047905894542063}
   focus: {fileID: 0}
-  healthBarSlider: {fileID: 0}
 --- !u!114 &6937845771671799286
 MonoBehaviour:
   m_ObjectHideFlags: 0

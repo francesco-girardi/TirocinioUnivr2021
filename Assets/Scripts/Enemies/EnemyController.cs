@@ -32,7 +32,10 @@ namespace Enemy {
         }
 
         private void Update() {
-            float distance = Vector3.Distance(target.position, transform.position);
+            float distance = float.MaxValue;
+
+            if (target != null)
+                distance = Vector3.Distance(target.position, transform.position);
 
             if (distance <= lookRadius) {
                 agent.SetDestination(target.position);
