@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 159772237}
   m_Layer: 0
   m_Name: Medium Bumps
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 162444813}
   m_Layer: 0
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 165864681}
   m_Layer: 0
   m_Name: Slope 7
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -2290,7 +2290,7 @@ GameObject:
   - component: {fileID: 362052700}
   m_Layer: 0
   m_Name: Big Bumps
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -7835,7 +7835,7 @@ GameObject:
   - component: {fileID: 466750505}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -7929,7 +7929,7 @@ GameObject:
   - component: {fileID: 477345548}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -8554,7 +8554,7 @@ GameObject:
   - component: {fileID: 559136466}
   m_Layer: 0
   m_Name: Slope 9
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -9758,7 +9758,7 @@ GameObject:
   - component: {fileID: 743335088}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -9852,7 +9852,7 @@ GameObject:
   - component: {fileID: 781388720}
   m_Layer: 0
   m_Name: Stairs
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -9982,7 +9982,7 @@ GameObject:
   - component: {fileID: 855852455}
   m_Layer: 0
   m_Name: Slope 2
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -11035,7 +11035,7 @@ GameObject:
   - component: {fileID: 1141894126}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -11744,7 +11744,7 @@ GameObject:
   - component: {fileID: 1210742538}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -12495,7 +12495,7 @@ GameObject:
   - component: {fileID: 1347960975}
   m_Layer: 0
   m_Name: Slope 6
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -12600,7 +12600,7 @@ PrefabInstance:
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5.34
       objectReference: {fileID: 0}
     - target: {fileID: 9146540876050948715, guid: 547055d2e7c753540bf299b930423028,
         type: 3}
@@ -13662,7 +13662,7 @@ GameObject:
   - component: {fileID: 1544403045}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13762,7 +13762,7 @@ GameObject:
   - component: {fileID: 1555233624}
   m_Layer: 0
   m_Name: Small Bumps
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -13939,7 +13939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fc03865a209c74db83ad0c46c6fa8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1725723023}
   distance: 10
   sensitivity: 100
 --- !u!114 &1593150345
@@ -14165,6 +14164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b07be2654e9f104485962ec310964f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerToSpawnObject: {fileID: 0}
   playerObject: {fileID: 0}
 --- !u!4 &1602912417
 Transform:
@@ -14399,6 +14399,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Terrain
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 56b3739bce3101c4a860174b33e89edb,
+        type: 3}
+      propertyPath: m_TagString
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 56b3739bce3101c4a860174b33e89edb,
         type: 3}
@@ -14813,12 +14818,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!4 &1725723023 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9146540875824710405, guid: 547055d2e7c753540bf299b930423028,
-    type: 3}
-  m_PrefabInstance: {fileID: 1372511804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1739682510
 GameObject:
   m_ObjectHideFlags: 0
@@ -15328,7 +15327,7 @@ GameObject:
   - component: {fileID: 1767142186}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -15516,7 +15515,7 @@ GameObject:
   - component: {fileID: 1822246001}
   m_Layer: 0
   m_Name: Slope 3
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -16030,7 +16029,7 @@ GameObject:
   - component: {fileID: 1884946390}
   m_Layer: 0
   m_Name: Slope 4
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -16130,7 +16129,7 @@ GameObject:
   - component: {fileID: 1941957715}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -16504,7 +16503,7 @@ GameObject:
   - component: {fileID: 1973736026}
   m_Layer: 0
   m_Name: Moving Platform
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -16917,7 +16916,7 @@ GameObject:
   - component: {fileID: 2010060766}
   m_Layer: 0
   m_Name: Slope 1
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -17204,7 +17203,7 @@ GameObject:
   - component: {fileID: 2021128087}
   m_Layer: 0
   m_Name: Stairs (1)
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -17580,7 +17579,7 @@ GameObject:
   - component: {fileID: 2061563865}
   m_Layer: 0
   m_Name: Stairs (2)
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -17945,7 +17944,7 @@ GameObject:
   - component: {fileID: 2111012802}
   m_Layer: 0
   m_Name: Slope 5
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
@@ -18039,7 +18038,7 @@ GameObject:
   - component: {fileID: 2143496119}
   m_Layer: 0
   m_Name: Slope 8
-  m_TagString: Untagged
+  m_TagString: Grass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
