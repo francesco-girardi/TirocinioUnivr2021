@@ -23,7 +23,7 @@ namespace Movement {
         private IEnumerator targetPlayer() {
             yield return new WaitForSeconds(1);
 
-            target = FindObjectOfType<PlayerLogic>().transform;
+            target = GameObject.FindGameObjectWithTag("CameraTarget").transform;
         }
 
         private void Start() {
