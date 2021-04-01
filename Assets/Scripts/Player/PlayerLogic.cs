@@ -76,14 +76,20 @@ public class PlayerLogic : CharacterStats {
         if (Input.GetMouseButtonDown(1))
             RemoveFocus();
 
-        if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hit;
+        RaycastHit hit;
 
+        if (Input.GetMouseButtonDown(0)) {
             if (Physics.Raycast(standbyCamera.position, standbyCamera.forward, out hit, 100)) {
                 Interactable interactable = hit.collider.GetComponent<Interactable>();
                 if (interactable != null)
                     SetFocus(interactable);
             }
+        }
+
+        if (Physics.Raycast(standbyCamera.position, standbyCamera.forward, out hit, 100)) {
+            Portal portal = hit.collider.GetComponent<Portal>();
+            if (portal != null)
+                portal.Teleport();
         }
 
         if (currentHealth <= 0)
