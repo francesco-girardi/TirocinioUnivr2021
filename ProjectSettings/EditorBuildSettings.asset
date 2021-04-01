@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EventSample.unity
     guid: 256b337ded40f34418b3e01cd0ff8232
+  - enabled: 1
+    path: Assets/Scenes/Town.unity
+    guid: a34193100cf929b40b0af6341fe13332
   m_configObjects: {}

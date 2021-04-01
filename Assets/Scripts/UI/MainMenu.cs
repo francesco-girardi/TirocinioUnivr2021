@@ -1,21 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using CustomEditorAttribute;
 
 namespace UI
 {
     public class MainMenu : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [Scene]
+        public string town;
+        public void NewGame()
+        {
+            SceneManager.LoadScene(town);
+            // SceneManager.LoadScene("Town");
+        }
+
+        public void Continue()
         {
 
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
+        public void Quit()
+        {   
+            Debug.Log("STO USCENDO FIGLI DI PUTTANAAAAAAAA");
+            Application.Quit();
         }
     }
 }
