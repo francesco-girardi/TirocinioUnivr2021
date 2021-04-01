@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MaroScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 35f70e7e68eed104c9e13fc794aca6cf
+  - enabled: 1
+    path: Assets/Scenes/LevelOne.unity
+    guid: f1e834083eb299642ae23fd4845bdb09
+  - enabled: 1
+    path: Assets/Scenes/EventSample.unity
+    guid: 256b337ded40f34418b3e01cd0ff8232
   m_configObjects: {}

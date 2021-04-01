@@ -21,7 +21,7 @@ namespace Movement {
         }
 
         private IEnumerator targetPlayer() {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
 
             target = GameObject.FindGameObjectWithTag("CameraTarget").transform;
         }
