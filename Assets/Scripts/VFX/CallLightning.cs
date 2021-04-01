@@ -1,26 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CallLightning : MonoBehaviour
-{
+public class CallLightning : MonoBehaviour {
 
     [SerializeField]
     private GameObject visualEffect;
 
-    void Start()
-    {
+    private void Start() {
         InvokeRepeating("Lightning", 2.0f, 1.5f);
     }
 
-
-
-    void Lightning()
-    {
-        if(visualEffect.activeSelf)
-        {
+    private void Lightning() {
+        if (visualEffect.activeSelf)
             visualEffect.SetActive(false);
-        } else {visualEffect.SetActive(true);}
-        
+        else
+            visualEffect.SetActive(true);
     }
+
 }
