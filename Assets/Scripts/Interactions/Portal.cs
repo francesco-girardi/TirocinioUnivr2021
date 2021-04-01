@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using CustomEditorAttribute;
 
 namespace Interactions {
 
@@ -9,8 +10,9 @@ namespace Interactions {
         [Header("Portal Info")]
         public float radius = 3f;
 
-        [Tooltip("Name of the scene to load")]
-        public string Scene;
+        [Scene]
+        [Tooltip("New scene to load")]
+        public string sceneToLoad;
 
         private Transform player;
 
@@ -21,7 +23,7 @@ namespace Interactions {
         public void Teleport() {
             float distance = Vector3.Distance(player.position, transform.position);
             if (distance <= radius) {
-                SceneManager.LoadScene(Scene);
+                SceneManager.LoadScene(sceneToLoad);
                 Cursor.lockState = CursorLockMode.None;
             }
         }

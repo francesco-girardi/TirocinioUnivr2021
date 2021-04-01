@@ -37,7 +37,6 @@ namespace Animation.Player {
         protected override void Start() {
             anim = GetComponent<Animator>();
             controller = GetComponentInParent<SimpleCharacterController>();
-
             // animator = GetComponentInChildren<Animator>();
             // base.Start();                                        //momentaneo finchè non mettiamo le animazioni di attacco o finchè non capisco meglio
         }
@@ -74,44 +73,47 @@ namespace Animation.Player {
 
         private void Step() {
             RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
-
-            GameObject terrain = hit.collider.gameObject;
-
-            if (terrain.tag == "Tile")
-                audioSource.PlayOneShot(tileClips[0]);
-            else if (terrain.tag == "Grass")
-                audioSource.PlayOneShot(grassClips[0]);
-            else
-                return;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 100)) {
+                GameObject terrain = hit.collider.gameObject;
+                if (terrain != null) {
+                    if (terrain.tag == "Tile")
+                        audioSource.PlayOneShot(tileClips[0]);
+                    else if (terrain.tag == "Grass")
+                        audioSource.PlayOneShot(grassClips[0]);
+                    else
+                        return;
+                }
+            }
         }
 
         private void RunStep() {
             RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
-
-            GameObject terrain = hit.collider.gameObject;
-
-            if (terrain.tag == "Tile")
-                audioSource.PlayOneShot(tileClips[1]);
-            else if (terrain.tag == "Grass")
-                audioSource.PlayOneShot(grassClips[1]);
-            else
-                return;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 100)) {
+                GameObject terrain = hit.collider.gameObject;
+                if (terrain != null) {
+                    if (terrain.tag == "Tile")
+                        audioSource.PlayOneShot(tileClips[1]);
+                    else if (terrain.tag == "Grass")
+                        audioSource.PlayOneShot(grassClips[1]);
+                    else
+                        return;
+                }
+            }
         }
 
         private void JumpStep() {
             RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, 1 + 0.1f);
-
-            GameObject terrain = hit.collider.gameObject;
-
-            if (terrain.tag == "Tile")
-                audioSource.PlayOneShot(tileClips[2]);
-            else if (terrain.tag == "Grass")
-                audioSource.PlayOneShot(grassClips[2]);
-            else
-                return;
+            if (Physics.Raycast(transform.position, Vector3.down, out hit, 100)) {
+                GameObject terrain = hit.collider.gameObject;
+                if (terrain != null) {
+                    if (terrain.tag == "Tile")
+                        audioSource.PlayOneShot(tileClips[2]);
+                    else if (terrain.tag == "Grass")
+                        audioSource.PlayOneShot(grassClips[2]);
+                    else
+                        return;
+                }
+            }
         }
     }
 
