@@ -25,11 +25,15 @@ public class PlayerLogic : CharacterStats {
     [Header("View objects")]
     public Interactable focus;
 
+    [HideInInspector]
+    public Wallet playerWallet { get; private set; }
+
+    [HideInInspector]
+    public string DataPath;
+
     private Slider healthBarSlider;
 
     private HealthBar healthBar;
-
-    private string dataPath;
 
     public override void Die() {
         base.Die();
@@ -45,8 +49,16 @@ public class PlayerLogic : CharacterStats {
         PlayerManager.GameOver();
     }
 
+    /// <summary>
+    /// Set player money
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetCurrentMoney(int value) {
+        playerWallet.SetMoney(value);
+    }
+
     private void Awake() {
-        dataPath = Application.persistentDataPath + "/playerData.json";
+        DataPath = Application.persistentDataPath + "/playerData.json";
 
         SetCurrentHealth(maxHealth);
 
@@ -54,13 +66,17 @@ public class PlayerLogic : CharacterStats {
 
         healthBar = new HealthBar(healthBarSlider);
         healthBar.SetMaxHealth(maxHealth);
+
+        playerWallet = new Wallet(0);
     }
 
     protected override void Start() {
-        PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
+        PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(DataPath);
 
-        if (playerDatas != null)
+        if (playerDatas != null) {
             SetCurrentHealth(playerDatas.playerHealth);
+            SetCurrentMoney(playerDatas.playerMoney);
+        }
 
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -97,8 +113,8 @@ public class PlayerLogic : CharacterStats {
     }
 
     private void SavePlayerData() {
-        PlayerDatas playerDatas = new PlayerDatas(currentHealth);
-        SavingSystem.PlayerToJSON(playerDatas, dataPath);
+        PlayerDatas playerDatas = new PlayerDatas(currentHealth, playerWallet.GetMoney());
+        SavingSystem.PlayerToJSON(playerDatas, DataPath);
     }
 
     private void SetFocus(Interactable interactable) {
@@ -155,4 +171,37 @@ public class HealthBar {
             slider.value = value;
     }
 
+}
+
+/// <summary>
+/// Defines player wallet
+/// </summary>
+[System.Serializable]
+public class Wallet {
+
+    int value;
+
+    /// <summary>
+    /// Player wallet
+    /// </summary>
+    /// <param name="value"></param>
+    public Wallet(int value) {
+        this.value = value;
+    }
+
+    /// <summary>
+    /// Set player money
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetMoney(int value) {
+        this.value = value;
+    }
+
+    /// <summary>
+    /// Get player money
+    /// </summary>
+    /// <returns></returns>
+    public int GetMoney() {
+        return value;
+    }
 }

@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CustomEditorAttribute;
+using Data;
 
 namespace Interactions {
 
@@ -14,15 +15,21 @@ namespace Interactions {
         [Tooltip("New scene to load")]
         public string sceneToLoad;
 
-        private Transform player;
+        private PlayerLogic player;
 
         private void Start() {
             StartCoroutine(TargetPlayer());
         }
 
         public void Teleport() {
-            float distance = Vector3.Distance(player.position, transform.position);
+            float distance = float.MaxValue;
+
+            if (player != null)
+                distance = Vector3.Distance(player.transform.position, transform.position);
+
             if (distance <= radius) {
+                SavingSystem.PlayerToJSON(new PlayerDatas(player.currentHealth, player.playerWallet.GetMoney()),
+                    player.DataPath);
                 SceneManager.LoadScene(sceneToLoad);
                 Cursor.lockState = CursorLockMode.None;
             }
@@ -31,7 +38,7 @@ namespace Interactions {
         private IEnumerator TargetPlayer() {
             yield return new WaitForSeconds(1);
 
-            player = PlayerManager.Instance.playerObject.transform;
+            player = PlayerManager.Instance.playerObject.GetComponent<PlayerLogic>();
         }
 
         private void OnDrawGizmosSelected() {

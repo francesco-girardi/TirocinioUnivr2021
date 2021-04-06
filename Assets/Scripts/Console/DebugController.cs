@@ -9,6 +9,7 @@ namespace Console {
         public static DebugCommand HELP;
 
         public static DebugCommand<float> PLAYER_HEALTH;
+        public static DebugCommand<float> PLAYER_MONEY;
 
         public List<object> commandList;
 
@@ -29,11 +30,14 @@ namespace Console {
         public void OnDebugControl() {
             showConsole = !showConsole;
             Debug.Log("Console is opening... ");
+            Cursor.lockState = CursorLockMode.None;
         }
 
         public void OnGUI() {
-            if (!showConsole)
+            if (!showConsole) {
+                Cursor.lockState = CursorLockMode.Locked;
                 return;
+            }
 
             float y = 0f;
 
@@ -80,9 +84,16 @@ namespace Console {
                         PlayerLogic.Killer = gameObject;
                 });
 
+            PLAYER_MONEY = new DebugCommand<float>("player_money", "Set current player money into the choosen value.",
+                "player_money", (x) => {
+                    Debug.Log("Player money set to: " + x);
+                    FindObjectOfType<PlayerLogic>().SetCurrentMoney((int)x);
+                });
+
             commandList = new List<object> {
                 HELP,
                 PLAYER_HEALTH,
+                PLAYER_MONEY,
             };
         }
 
