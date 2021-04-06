@@ -7,9 +7,24 @@ namespace Animation.Enemy.FaerieDragon {
         [SerializeField]
         private GameObject Ball;
 
+        [SerializeField]
+        private GameObject SpawnPoint;
+
+        private GameObject ThisBall;
+
         private void ChargeSphere() {
-            Instantiate(Ball, transform.position, Quaternion.identity);
+            ThisBall = Instantiate(Ball, SpawnPoint.transform.position, Quaternion.identity);
+            ThisBall.GetComponent<FD_Projectile>().enabled = false;
+
         }
+
+
+        private void Shoot(){
+
+            ThisBall.GetComponent<FD_Projectile>().enabled = true;
+        }
+
+    
 
     }
 

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 410754174991171931}
   - component: {fileID: 7792810410691860718}
   - component: {fileID: 303121818985833319}
+  - component: {fileID: 5808851466177382179}
   m_Layer: 0
   m_Name: FireSlime
   m_TagString: Enemy
@@ -36,6 +37,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3396707485477462470}
+  - {fileID: 8459675196993123846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -72,7 +74,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1
-  m_Height: 0.45
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4058566433988780397
@@ -163,6 +165,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0691fa1ba8b392842a066f85f4fa7836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5808851466177382179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123020996865663033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4260389446b008e45bbf5623599d6656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCooldown: 5
+  Mina: {fileID: 6487824755533219327, guid: 3c20a87d06fd6134bb8a652ba9ddbc29, type: 3}
+  SpawnPoint: {fileID: 6411039729025443568}
 --- !u!1 &4911872673758577406
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +376,36 @@ Transform:
   m_Father: {fileID: 3396707485477462470}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &6411039729025443568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8459675196993123846}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8459675196993123846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6411039729025443568}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3637845738871323267}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7648000051289608397
 GameObject:
   m_ObjectHideFlags: 0
