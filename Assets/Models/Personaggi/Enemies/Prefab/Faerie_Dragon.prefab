@@ -32,6 +32,36 @@ Transform:
   m_Father: {fileID: 4548829812781207587}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &87592206178243381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5183158803782804845}
+  m_Layer: 0
+  m_Name: BallSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5183158803782804845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87592206178243381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.52, y: -0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4010986470326163911}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &325437241874905646
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,8 +242,8 @@ MonoBehaviour:
   maxHealth: 100
   armor:
     baseValue: 0
-  attackSpeed: 1
-  attackCooldown: 0
+  attackSpeed: 0.2
+  attackCooldown: 3
   attackDelay: 0.6
   damage:
     baseValue: 5
@@ -430,7 +460,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec4bb77595c43c4f811249f9015e3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ball: {fileID: 0}
+  Ball: {fileID: 1810476706513891032, guid: e21a6a12571d7064c88ecf4c6f62140f, type: 3}
+  SpawnPoint: {fileID: 87592206178243381}
 --- !u!1 &1639736400482836816
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,6 +1012,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7376412620500314046}
+  - {fileID: 5183158803782804845}
   m_Father: {fileID: 8137368927164531313}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1594,12 +1626,12 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4835078630258379571, guid: a1883563e19bbd544baac409694feb88, type: 3}
+  - {fileID: 2100000, guid: e96caeef23b8cea4d87caf8b28481305, type: 2}
   - {fileID: -2249960132812961191, guid: a1883563e19bbd544baac409694feb88, type: 3}
-  - {fileID: 6098924145076851180, guid: a1883563e19bbd544baac409694feb88, type: 3}
+  - {fileID: 2100000, guid: efd2cdb714a651b43a66738255f7d27f, type: 2}
   - {fileID: 5329571196344025901, guid: a1883563e19bbd544baac409694feb88, type: 3}
   - {fileID: -8050166644214736600, guid: a1883563e19bbd544baac409694feb88, type: 3}
-  - {fileID: 4167910553179981948, guid: a1883563e19bbd544baac409694feb88, type: 3}
+  - {fileID: 2100000, guid: 1093b3c96cdfff04287d3fab5a8799be, type: 2}
   - {fileID: -3044307849733925388, guid: a1883563e19bbd544baac409694feb88, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0

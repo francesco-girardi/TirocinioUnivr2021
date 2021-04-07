@@ -18,6 +18,7 @@ namespace Enemy.FaerieDragon {
         }
 
         private void AttackPlayer() {
+
             CharacterCombat playerCombat = playerManager.playerObject.GetComponent<CharacterCombat>();
             if (playerCombat != null)
                 playerCombat.Attack(myStats);
