@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CustomEditorAttribute;
+using Data;
 
 namespace UI
 {
@@ -12,8 +13,9 @@ namespace UI
         public string town;
         public void NewGame()
         {
+            // PlayerDatas playerDatas = new PlayerDatas(100, 0);
+            // SavingSystem.PlayerToJSON(playerDatas, DataPath);
             SceneManager.LoadScene(town);
-            // SceneManager.LoadScene("Town");
         }
 
         public void Continue()
