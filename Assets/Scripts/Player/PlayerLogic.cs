@@ -72,7 +72,7 @@ public class PlayerLogic : CharacterStats {
 
     protected override void Start() {
         PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(DataPath);
-
+        Debug.Log(playerDatas);
         if (playerDatas != null) {
             SetCurrentHealth(playerDatas.playerHealth);
             SetCurrentMoney(playerDatas.playerMoney);
