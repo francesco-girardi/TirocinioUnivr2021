@@ -1,38 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class SpawnMines : MonoBehaviour
-{
+namespace Enemy {
 
-    private float cooldown;
-    
-    [SerializeField]
-    private float startCooldown;
+    public class SpawnMines : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject Mina;
+        private float cooldown;
 
-    [SerializeField]
-    private GameObject SpawnPoint;
+        [SerializeField]
+        private float startCooldown;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        cooldown = startCooldown;
+        [SerializeField]
+        private GameObject Mina;
+
+        [SerializeField]
+        private GameObject SpawnPoint;
+
+        void Start() {
+            cooldown = startCooldown;
+        }
+
+        void Update() {
+            if (cooldown <= 0) {
+                Instantiate(Mina, SpawnPoint.transform.position, Quaternion.identity);
+                cooldown = startCooldown;
+            } else {
+                cooldown -= Time.deltaTime;
+            }
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       if(cooldown <= 0){
-
-           
-           Instantiate(Mina, SpawnPoint.transform.position, Quaternion.identity);
-           cooldown = startCooldown;
-
-       } else{
-           cooldown -= Time.deltaTime;
-       }
-    }
 }
+
