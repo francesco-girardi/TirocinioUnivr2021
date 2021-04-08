@@ -1,30 +1,35 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using CustomEditorAttribute;
 using Data;
 
-namespace UI
-{
-    public class MainMenu : MonoBehaviour
-    {
+namespace UI {
+    public class MainMenu : MonoBehaviour {
+
+        public static bool continueGame = false;
+
         [Scene]
         public string town;
-        public void NewGame()
-        {
+
+        private string dataPath;
+
+        private void Awake() {
+            dataPath = Application.persistentDataPath + "/playerData.json";
+        }
+
+        public void NewGame() {
             // PlayerDatas playerDatas = new PlayerDatas(100, 0);
             // SavingSystem.PlayerToJSON(playerDatas, DataPath);
             SceneManager.LoadScene(town);
         }
 
-        public void Continue()
-        {
-
+        public void Continue() {
+            continueGame = true;
+            PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
+            SceneManager.LoadScene(playerDatas.sceneBuildIndex);
         }
 
-        public void Quit()
-        {   
+        public void Quit() {
             Debug.Log("STO USCENDO FIGLI DI PUTTANAAAAAAAA");
             Application.Quit();
         }

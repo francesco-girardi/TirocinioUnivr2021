@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour {
         SoundManager.Instance.PlaySound("explosion_01");
     }
 
-
     public void SetSpawnLocation(GameObject spawnLocation) {
         this.spawnLocation = spawnLocation;
     }

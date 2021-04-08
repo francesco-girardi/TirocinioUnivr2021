@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Stat;
 using Events;
@@ -55,6 +56,28 @@ public class PlayerLogic : CharacterStats {
     /// <param name="value"></param>
     public void SetCurrentMoney(int value) {
         playerWallet.SetMoney(value);
+    }
+
+    /// <summary>
+    /// Add money to player
+    /// </summary>
+    /// <param name="value"></param>
+    public void AddMoney(int value) {
+        playerWallet.SetMoney(playerWallet.GetMoney() + value);
+    }
+
+    /// <summary>
+    /// Remove money to player
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns>true if money are removed</returns>
+    public bool RemoveMoney(int value) {
+        if (playerWallet.GetMoney() > value)
+            playerWallet.SetMoney(playerWallet.GetMoney() - value);
+        else
+            return false;
+
+        return true;
     }
 
     private void Awake() {
@@ -116,8 +139,12 @@ public class PlayerLogic : CharacterStats {
 
     }
 
-    private void SavePlayerData() {
-        PlayerDatas playerDatas = new PlayerDatas(currentHealth, playerWallet.GetMoney());
+    /// <summary>
+    /// Save current player datas
+    /// </summary>
+    public void SavePlayerData() {
+        PlayerDatas playerDatas = new PlayerDatas(SceneManager.GetActiveScene().buildIndex, transform.position,
+            currentHealth, playerWallet.GetMoney());
         SavingSystem.PlayerToJSON(playerDatas, DataPath);
     }
 
