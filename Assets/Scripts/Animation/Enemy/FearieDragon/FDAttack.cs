@@ -17,14 +17,9 @@ namespace Animation.Enemy.FaerieDragon {
             ThisBall.GetComponent<FD_Projectile>().enabled = false;
 
         }
-
-
-        private void Shoot(){
-
+        private void Shoot() {
             ThisBall.GetComponent<FD_Projectile>().enabled = true;
         }
-
-    
 
     }
 

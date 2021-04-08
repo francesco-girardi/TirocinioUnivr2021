@@ -110,6 +110,10 @@ public class PlayerLogic : CharacterStats {
 
         if (currentHealth <= 0)
             Die();
+
+        if (transform.position.y == -100)
+            transform.position = new Vector3(transform.position.x, 50, transform.position.z);
+
     }
 
     private void SavePlayerData() {
