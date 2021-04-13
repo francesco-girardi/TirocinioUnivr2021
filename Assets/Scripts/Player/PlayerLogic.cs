@@ -29,12 +29,11 @@ public class PlayerLogic : CharacterStats {
     [HideInInspector]
     public Wallet playerWallet { get; private set; }
 
-    [HideInInspector]
-    public string DataPath;
-
     private Slider healthBarSlider;
 
     private HealthBar healthBar;
+
+    private string dataPath;
 
     public override void Die() {
         base.Die();
@@ -81,7 +80,7 @@ public class PlayerLogic : CharacterStats {
     }
 
     private void Awake() {
-        DataPath = Application.persistentDataPath + "/playerData.json";
+        dataPath = Application.persistentDataPath + "/playerData.json";
 
         SetCurrentHealth(maxHealth);
 
@@ -94,7 +93,7 @@ public class PlayerLogic : CharacterStats {
     }
 
     protected override void Start() {
-        PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(DataPath);
+        PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
         Debug.Log(playerDatas);
         if (playerDatas != null) {
             SetCurrentHealth(playerDatas.playerHealth);

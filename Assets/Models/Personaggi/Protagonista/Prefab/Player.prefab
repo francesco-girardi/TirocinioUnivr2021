@@ -2904,7 +2904,6 @@ MonoBehaviour:
     baseValue: 5
   standbyCamera: {fileID: 4344047905894542063}
   focus: {fileID: 0}
-  DataPath: 
 --- !u!114 &6937845771671799286
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ namespace UI {
         }
 
         public void NewGame() {
-            PlayerDatas playerDatas = new PlayerDatas(1, null, 100, 0);
+            PlayerDatas playerDatas = new PlayerDatas(1, Vector3.zero, Quaternion.Euler(0, 0, 0), 100, 0);
             SavingSystem.PlayerToJSON(playerDatas, dataPath);
             SceneManager.LoadScene(town);
         }
@@ -26,7 +26,7 @@ namespace UI {
         public void Continue() {
             continueGame = true;
             PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
-            SceneManager.LoadScene(playerDatas.sceneBuildIndex);
+            SceneManager.LoadSceneAsync(playerDatas.sceneBuildIndex);
         }
 
         public void Quit() {

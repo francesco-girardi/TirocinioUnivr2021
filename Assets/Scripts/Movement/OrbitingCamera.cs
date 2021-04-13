@@ -16,10 +16,6 @@ namespace Movement {
 
         Vector2 distanceMinMax;
 
-        private void Awake() {
-            StartCoroutine(targetPlayer());
-        }
-
         private IEnumerator targetPlayer() {
             yield return new WaitForSeconds(0.5f);
 
@@ -27,6 +23,8 @@ namespace Movement {
         }
 
         private void Start() {
+            StartCoroutine(targetPlayer());
+
             distanceMinMax = new Vector2(0.5f, distance);
 
 #if UNITY_EDITOR

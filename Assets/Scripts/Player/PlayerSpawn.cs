@@ -1,7 +1,6 @@
 ﻿using Data;
 using UI;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerSpawn : MonoBehaviour {
 
@@ -14,7 +13,7 @@ public class PlayerSpawn : MonoBehaviour {
         PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
 
         if (MainMenu.continueGame) {
-            gameObject.transform.position = playerDatas.playerPosition.position;
+            gameObject.transform.position = playerDatas.playerPosition;
             MainMenu.continueGame = false;
         }
 
