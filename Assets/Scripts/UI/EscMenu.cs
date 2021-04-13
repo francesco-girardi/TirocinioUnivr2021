@@ -66,6 +66,7 @@ namespace UI
 
             Debug.Log("EscMenu :: Saving datas.");
             SavingSystem.PlayerToJSON(playerDatas, playerLogic.DataPath);
+            resume();
             
         }
 

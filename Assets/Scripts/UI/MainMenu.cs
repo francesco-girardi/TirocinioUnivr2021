@@ -18,8 +18,8 @@ namespace UI {
         }
 
         public void NewGame() {
-            // PlayerDatas playerDatas = new PlayerDatas(100, 0);
-            // SavingSystem.PlayerToJSON(playerDatas, DataPath);
+            PlayerDatas playerDatas = new PlayerDatas(1, null, 100, 0);
+            SavingSystem.PlayerToJSON(playerDatas, dataPath);
             SceneManager.LoadScene(town);
         }
 
