@@ -3,12 +3,11 @@
 public class PlayerDatas {
 
     public int sceneBuildIndex;
-    public Vector3 playerPosition;
-
+    public Transform playerPosition;
     public int playerHealth;
     public int playerMoney;
 
-    public PlayerDatas(int sceneBuildIndex, Vector3 playerPosition, int playerHealth, int playerMoney) {
+    public PlayerDatas(int sceneBuildIndex, Transform playerPosition, int playerHealth, int playerMoney) {
         this.sceneBuildIndex = sceneBuildIndex;
         this.playerPosition = playerPosition;
         this.playerHealth = playerHealth;

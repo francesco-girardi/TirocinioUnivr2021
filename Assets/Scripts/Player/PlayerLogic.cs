@@ -105,10 +105,6 @@ public class PlayerLogic : CharacterStats {
     }
 
     protected override void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            Debug.Log("PlayerLogic :: Saving datas.");
-            SavePlayerData();
-        }
 
         healthBar.SetHealth(currentHealth);
 
@@ -137,15 +133,6 @@ public class PlayerLogic : CharacterStats {
         if (transform.position.y == -100)
             transform.position = new Vector3(transform.position.x, 50, transform.position.z);
 
-    }
-
-    /// <summary>
-    /// Save current player datas
-    /// </summary>
-    public void SavePlayerData() {
-        PlayerDatas playerDatas = new PlayerDatas(SceneManager.GetActiveScene().buildIndex, transform.position,
-            currentHealth, playerWallet.GetMoney());
-        SavingSystem.PlayerToJSON(playerDatas, DataPath);
     }
 
     private void SetFocus(Interactable interactable) {

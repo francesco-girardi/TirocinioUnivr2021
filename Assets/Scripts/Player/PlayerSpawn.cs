@@ -14,7 +14,7 @@ public class PlayerSpawn : MonoBehaviour {
         PlayerDatas playerDatas = SavingSystem.PlayerFromJSON(dataPath);
 
         if (MainMenu.continueGame) {
-            gameObject.transform.position = playerDatas.playerPosition;
+            gameObject.transform.position = playerDatas.playerPosition.position;
             MainMenu.continueGame = false;
         }
 
@@ -24,12 +24,6 @@ public class PlayerSpawn : MonoBehaviour {
 
     private void Start() {
         playerManager.SpawnPlayer();
-
-        PlayerDatas playerDatas = new PlayerDatas(SceneManager.GetActiveScene().buildIndex,
-            playerManager.playerObject.transform.position,
-            playerManager.playerObject.GetComponent<PlayerLogic>().currentHealth,
-            playerManager.playerObject.GetComponent<PlayerLogic>().playerWallet.GetMoney());
-        SavingSystem.PlayerToJSON(playerDatas, dataPath);
     }
 
 }
