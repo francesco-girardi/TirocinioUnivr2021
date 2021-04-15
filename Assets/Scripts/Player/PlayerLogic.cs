@@ -29,9 +29,9 @@ public class PlayerLogic : CharacterStats {
     [HideInInspector]
     public Wallet playerWallet { get; private set; }
 
-    private Slider healthBarSlider;
+    // private Slider healthBarSlider;
 
-    private HealthBar healthBar;
+    // private HealthBar healthBar;
 
     private string dataPath;
 
@@ -84,10 +84,10 @@ public class PlayerLogic : CharacterStats {
 
         SetCurrentHealth(maxHealth);
 
-        healthBarSlider = GameObject.FindGameObjectWithTag("HealthBarUI").GetComponent<Slider>();
+        // healthBarSlider = GameObject.FindGameObjectWithTag("HealthBarUI").GetComponent<Slider>();
 
-        healthBar = new HealthBar(healthBarSlider);
-        healthBar.SetMaxHealth(maxHealth);
+        // healthBar = new HealthBar(healthBarSlider);
+        // healthBar.SetMaxHealth(maxHealth);
 
         playerWallet = new Wallet(0);
     }
@@ -105,7 +105,7 @@ public class PlayerLogic : CharacterStats {
 
     protected override void Update() {
 
-        healthBar.SetHealth(currentHealth);
+        // healthBar.SetHealth(currentHealth);
 
         if (Input.GetMouseButtonDown(1))
             RemoveFocus();
@@ -155,40 +155,40 @@ public class PlayerLogic : CharacterStats {
 
 }
 
-/// <summary>
-/// HealthBar code 
-/// </summary>
-public class HealthBar {
+// /// <summary>
+// /// HealthBar code 
+// /// </summary>
+// public class HealthBar {
 
-    private Slider slider;
+//     private Slider slider;
 
-    /// <summary>
-    /// Create a generic healthBar
-    /// </summary>
-    /// <param name="slider"></param>
-    public HealthBar(Slider slider) {
-        this.slider = slider;
-    }
+//     /// <summary>
+//     /// Create a generic healthBar
+//     /// </summary>
+//     /// <param name="slider"></param>
+//     public HealthBar(Slider slider) {
+//         this.slider = slider;
+//     }
 
-    /// <summary>
-    /// Set maximun health value
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetMaxHealth(int value) {
-        if (slider != null)
-            slider.maxValue = value;
-    }
+//     /// <summary>
+//     /// Set maximun health value
+//     /// </summary>
+//     /// <param name="value"></param>
+//     public void SetMaxHealth(int value) {
+//         if (slider != null)
+//             slider.maxValue = value;
+//     }
 
-    /// <summary>
-    /// Set current health value
-    /// </summary>
-    /// <param name="value"></param>
-    public void SetHealth(int value) {
-        if (slider != null)
-            slider.value = value;
-    }
+//     /// <summary>
+//     /// Set current health value
+//     /// </summary>
+//     /// <param name="value"></param>
+//     public void SetHealth(int value) {
+//         if (slider != null)
+//             slider.value = value;
+//     }
 
-}
+// }
 
 /// <summary>
 /// Defines player wallet

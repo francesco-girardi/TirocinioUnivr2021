@@ -8,6 +8,7 @@ namespace UI {
         public bool gamePaused = false;
 
         public GameObject pauseMenuUI;
+        public GameObject onScreenUI;
 
         private string dataPath;
 
@@ -31,6 +32,7 @@ namespace UI {
             Cursor.lockState = CursorLockMode.Locked;
             gamePaused = false;
             pauseMenuUI.SetActive(false);
+            onScreenUI.SetActive(true);
 
         }
 
@@ -39,6 +41,7 @@ namespace UI {
             Cursor.lockState = CursorLockMode.None;
             gamePaused = true;
             pauseMenuUI.SetActive(true);
+            onScreenUI.SetActive(false);
 
         }
 
