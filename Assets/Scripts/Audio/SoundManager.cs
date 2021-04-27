@@ -59,6 +59,9 @@ namespace Audio {
         /// </summary>
         /// <param name="soundName"></param>
         public void ChangeBackground(string soundName) {
+
+            backgroundMusic.Stop();
+
             Sound s = System.Array.Find(sounds, sound => sound.soundName == soundName);
 
             if (s == null) {
@@ -66,9 +69,15 @@ namespace Audio {
                 return;
             }
 
-            s.audioSource = backgroundMusic;
+            backgroundMusic = s.audioSource;
 
-            s.audioSource.Play();
+            if(SongController.Instance.bgThread != null)
+                if(SongController.Instance.bgThread.IsAlive)
+                    SongController.Instance.bgThread.Abort();
+
+            SongController.Instance.analyze = true;
+            SongController.Instance.StartPreprocess();
+            backgroundMusic.Play();
         }
 
         private void Awake() {
@@ -93,6 +102,9 @@ namespace Audio {
                 sound.audioSource.pitch = sound.soundPitch;
                 sound.audioSource.loop = sound.soundLoop;
             }
+
+            AudioSource audioSource = GetComponentInChildren<AudioSource>();
+            audioSource.Play();
         }
 
         private int GetMixerIndex(Sound.MixerName mixerName) {
@@ -110,6 +122,13 @@ namespace Audio {
             }
 
             return index;
+        }
+
+        private void Update() {
+            if(Input.GetKey(KeyCode.L))
+                ChangeBackground("BestSongEvah");
+            if(Input.GetKey(KeyCode.K))
+                ChangeBackground("background");
         }
 
     }

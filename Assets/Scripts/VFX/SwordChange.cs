@@ -1,42 +1,61 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Audio;
 
-public class SwordChange : MonoBehaviour
-{
+namespace VFX {
 
-    [SerializeField]
-    private MeshRenderer Sword;
+    public class SwordChange : MonoBehaviour{
 
-    [SerializeField]
-    private Material BaseMat;
+        [SerializeField]
+        private MeshRenderer Sword;
 
-    [SerializeField]
-    private Material ActiveMat;
+        [SerializeField]
+        private Material BaseMat;
 
-    bool isActive = false;  
+        [SerializeField]
+        private Material ActiveMat;
 
-    [SerializeField]
-    private GameObject visualEffect;
+        bool isActive = false;
 
-    void Start()
-    {          
-        InvokeRepeating("ChangeStance", 2.0f, 10.0f);
-    }
+        [SerializeField]
+        private GameObject visualEffect;
 
+        void Start() {
+            // InvokeRepeating("ChangeStance", 2.0f, 10.0f);
+        }
 
+        public void Update() {
 
-    void ChangeStance()
-    {
-       if(isActive){
+            if(SongController.Instance.IsPeak)
+                ToggleOn();
+            else
+                ToggleOff();
+        }
+
+        void ChangeStance() {
+            if (isActive){
+                Sword.material = ActiveMat;
+                visualEffect.SetActive(true);
+                isActive = false;
+            }
+            else{
+                Sword.material = BaseMat;
+                visualEffect.SetActive(false);
+                isActive = true;
+            }
+        }
+
+        void ToggleOn() {
             Sword.material = ActiveMat;
             visualEffect.SetActive(true);
-            isActive = false;
-       } else
-       {
+            isActive = true;
+        }
+
+        void ToggleOff(){
             Sword.material = BaseMat;
             visualEffect.SetActive(false);
-            isActive = true;
+            isActive = false;
         }
     }
 }

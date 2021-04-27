@@ -10,6 +10,7 @@ TagManager:
   - Tile
   - Grass
   - CameraTarget
+  - Music
   layers:
   - Default
   - TransparentFX

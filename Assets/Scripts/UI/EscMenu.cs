@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using Data;
+using Audio;
 
 namespace UI {
 
@@ -14,21 +15,27 @@ namespace UI {
 
         GameObject player;
 
+        private AudioSource audioSource;
+
         private void Awake() {
             dataPath = Application.persistentDataPath + "/playerData.json";
         }
 
         // Update is called once per frame
         void Update() {
+
+            audioSource = SoundManager.Instance.backgroundMusic;
+
             if (Input.GetKeyDown(KeyCode.Escape))
                 if (gamePaused)
-                    resume();
+                    Resume();
                 else
-                    pause();
+                    Pause();
         }
 
-        public void resume() {
+        public void Resume() {
             Time.timeScale = 1f;
+            audioSource.Play();
             Cursor.lockState = CursorLockMode.Locked;
             gamePaused = false;
             pauseMenuUI.SetActive(false);
@@ -36,8 +43,9 @@ namespace UI {
 
         }
 
-        public void pause() {
+        public void Pause() {
             Time.timeScale = 0f;
+            audioSource.Pause();
             Cursor.lockState = CursorLockMode.None;
             gamePaused = true;
             pauseMenuUI.SetActive(true);
@@ -45,7 +53,7 @@ namespace UI {
 
         }
 
-        public void goToMainMenu() {
+        public void GoToMainMenu() {
             Time.timeScale = 1f;
             SceneManager.LoadScene("MainMenu");
         }
@@ -69,7 +77,7 @@ namespace UI {
             Debug.Log(playerDatas);
             Debug.Log("EscMenu :: Saving datas.");
             SavingSystem.PlayerToJSON(playerDatas, dataPath);
-            resume();
+            Resume();
 
         }
 
