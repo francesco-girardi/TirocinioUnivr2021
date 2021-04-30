@@ -11,6 +11,10 @@ TagManager:
   - Grass
   - CameraTarget
   - Music
+  - Alchimista
+  - Fabbro
+  - Suora
+  - Maschere
   layers:
   - Default
   - TransparentFX
