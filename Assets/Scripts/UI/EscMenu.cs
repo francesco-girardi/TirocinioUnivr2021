@@ -2,11 +2,17 @@
 using UnityEngine.SceneManagement;
 using Data;
 using Audio;
+using Console;
 
 namespace UI {
 
     public class EscMenu : MonoBehaviour {
-        public bool gamePaused = false;
+
+        private static bool gamePaused = false;
+
+        public static bool GamePaused {
+            get => gamePaused;
+        }
 
         public GameObject pauseMenuUI;
         public GameObject onScreenUI;
@@ -50,7 +56,7 @@ namespace UI {
             gamePaused = true;
             pauseMenuUI.SetActive(true);
             onScreenUI.SetActive(false);
-
+            DebugController.ShowConsole = false;
         }
 
         public void GoToMainMenu() {

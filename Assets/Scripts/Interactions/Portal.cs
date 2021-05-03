@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using CustomEditorAttribute;
-using Data;
 
 namespace Interactions {
 

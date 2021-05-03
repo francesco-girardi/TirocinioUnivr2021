@@ -1,6 +1,7 @@
 ﻿using Stat;
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
 namespace Console {
 
@@ -13,7 +14,14 @@ namespace Console {
 
         public List<object> commandList;
 
-        private bool showConsole;
+        private static bool showConsole;
+
+        public static bool ShowConsole {
+            get => showConsole;
+            set {
+                showConsole = value;
+            }
+        }
         private bool showHelp;
 
         private string input;
@@ -35,7 +43,8 @@ namespace Console {
 
         public void OnGUI() {
             if (!showConsole) {
-                Cursor.lockState = CursorLockMode.Locked;
+                if (!EscMenu.GamePaused)
+                    Cursor.lockState = CursorLockMode.Locked;
                 return;
             }
 
@@ -121,7 +130,8 @@ namespace Console {
                 if (input.Contains(commandBase.commandId)) {
                     if (commandList[i] as DebugCommand != null) {
                         (commandList[i] as DebugCommand).Invoke();
-                    } else if (commandList[i] as DebugCommand<float> != null) {
+                    }
+                    else if (commandList[i] as DebugCommand<float> != null) {
                         (commandList[i] as DebugCommand<float>).Invoke(float.Parse(properties[1]));
                     }
                 }
