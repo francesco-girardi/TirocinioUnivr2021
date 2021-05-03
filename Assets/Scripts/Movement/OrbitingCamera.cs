@@ -1,14 +1,9 @@
 ﻿using System.Collections;
 using UnityEngine;
-using Interactions;
 
 namespace Movement {
 
     public class OrbitingCamera : MonoBehaviour {
-
-        public GameObject cilindro;
-        private AlchemistShop script;
-
         private Transform target;
 
         public float distance = 5f;
@@ -28,7 +23,6 @@ namespace Movement {
         }
 
         private void Start() {
-            script = cilindro.GetComponent<AlchemistShop>();
 
             StartCoroutine(targetPlayer());
 
@@ -44,7 +38,6 @@ namespace Movement {
         }
 
         private void LateUpdate() {
-            if(script.IsShopping==false){
             if (target == null)
                 return;
 
@@ -66,7 +59,6 @@ namespace Movement {
             position = target.position + cameraRotation * new Vector3(0f, 0f, -distance);
 
             transform.SetPositionAndRotation(position, cameraRotation);
-            }
         }
     }
 }
