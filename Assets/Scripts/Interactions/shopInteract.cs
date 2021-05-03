@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UI;
 
 namespace Interactions {
 
@@ -26,6 +27,8 @@ namespace Interactions {
             Vector3 posizione = new Vector3(18.19f, 2.79f, 17.28f);
 
             if (Input.GetKey(KeyCode.E) && isShopping == false) {
+                EscMenu.GamePaused = true;
+                Cursor.lockState = CursorLockMode.None;
                 switch (this.tag) {
                     case "Alchimista":
                         Alchimista();
@@ -48,7 +51,9 @@ namespace Interactions {
 
             if (Input.GetKey(KeyCode.Escape) && isShopping == true) {
                 CloseCanvas();
+                Cursor.lockState = CursorLockMode.Locked;
                 isShopping = false;
+                EscMenu.GamePaused = false;
             }
         }
 
@@ -65,10 +70,14 @@ namespace Interactions {
             maschere.SetActive(true);
         }
         private void CloseCanvas() {
-            alchimista.SetActive(false);
-            maschere.SetActive(false);
-            fabbro.SetActive(false);
-            maschere.SetActive(false);
+            if (alchimista != null)
+                alchimista.SetActive(false);
+            if (maschere != null)
+                maschere.SetActive(false);
+            if (fabbro != null)
+                fabbro.SetActive(false);
+            if (maschere != null)
+                maschere.SetActive(false);
         }
     }
 }

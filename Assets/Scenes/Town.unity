@@ -2831,7 +2831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &493529219
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7269,10 +7269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b82742d08fa51748aa298bb0c077050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alchimista: {fileID: 2029920305}
+  alchimista: {fileID: 0}
   maschere: {fileID: 1269308436}
-  suora: {fileID: 1276064920}
-  fabbro: {fileID: 493529218}
+  suora: {fileID: 0}
+  fabbro: {fileID: 0}
 --- !u!136 &1229017925
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7484,7 +7484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1269308437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7519,7 +7519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1276064921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9711,10 +9711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b82742d08fa51748aa298bb0c077050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alchimista: {fileID: 2029920305}
-  maschere: {fileID: 1269308436}
+  alchimista: {fileID: 0}
+  maschere: {fileID: 0}
   suora: {fileID: 1276064920}
-  fabbro: {fileID: 493529218}
+  fabbro: {fileID: 0}
 --- !u!136 &1659025338
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10500,9 +10500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alchimista: {fileID: 2029920305}
-  maschere: {fileID: 1269308436}
-  suora: {fileID: 1276064920}
-  fabbro: {fileID: 493529218}
+  maschere: {fileID: 0}
+  suora: {fileID: 0}
+  fabbro: {fileID: 0}
 --- !u!136 &1831131161
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -13240,9 +13240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b82742d08fa51748aa298bb0c077050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alchimista: {fileID: 2029920305}
-  maschere: {fileID: 1269308436}
-  suora: {fileID: 1276064920}
+  alchimista: {fileID: 0}
+  maschere: {fileID: 0}
+  suora: {fileID: 0}
   fabbro: {fileID: 493529218}
 --- !u!136 &1991232665
 CapsuleCollider:
@@ -13588,7 +13588,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2029920306
 RectTransform:
   m_ObjectHideFlags: 0
