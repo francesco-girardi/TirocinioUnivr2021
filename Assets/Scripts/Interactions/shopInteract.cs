@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Interactions {
 
-    public class AlchemistShop : MonoBehaviour {
+    public class shopInteract : MonoBehaviour {
         private bool isShopping = false;
 
         private PlayerLogic player;
