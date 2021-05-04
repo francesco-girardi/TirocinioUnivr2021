@@ -21705,7 +21705,6 @@ GameObject:
   - component: {fileID: 1732163081}
   - component: {fileID: 1732163080}
   - component: {fileID: 1732163082}
-  - component: {fileID: 1732163083}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -21753,22 +21752,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visualEffect: {fileID: 301694101}
---- !u!114 &1732163083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1732163079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d1ac566dfcf3e4bb55680c1dcd6d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sword: {fileID: 5362925335487509432}
-  BaseMat: {fileID: 2100000, guid: 3a520fe04a7322c4a83c1c369bab0e99, type: 2}
-  ActiveMat: {fileID: 2100000, guid: 5ac944add04b3f0449952f5ab8cc140f, type: 2}
-  visualEffect: {fileID: 73108038}
 --- !u!1001 &1735221699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35582,6 +35565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3916972958716062543}
   - component: {fileID: 4400072411704504822}
+  - component: {fileID: 4400072411704504823}
   m_Layer: 0
   m_Name: Ossidricista
   m_TagString: Untagged
@@ -35608,6 +35592,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4400072411704504823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400072411704504821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace2ef1ee58f8ae48a2133d2b655dbc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fiamma: {fileID: 4826266164786359469}
 --- !u!1 &4414805742653138327
 GameObject:
   m_ObjectHideFlags: 0

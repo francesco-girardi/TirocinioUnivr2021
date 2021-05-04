@@ -28,6 +28,14 @@ namespace Animation.Player {
         private bool isDashing;
         private bool jumped;
         private bool isGrounded;
+        private bool chain = false;
+
+        [SerializeField]
+         private GameObject SwordBack;
+
+        [SerializeField]
+        private GameObject SwordHand;     
+
 
         private void Awake() {
             audioSource = GetComponent<AudioSource>();
@@ -69,6 +77,35 @@ namespace Animation.Player {
             anim.SetBool("isDashing", isDashing);
             anim.SetBool("jumped", jumped);
             anim.SetBool("isGrounded", isGrounded);
+
+
+            
+            if(Input.GetButtonDown("CombatStance") && !isWalking && !isRunning && !isCrouched && !jumped && isGrounded ){
+
+                anim.SetBool("combatStance", true);
+            
+            }
+
+            if(Input.GetButtonDown("EndCombatStance")){
+
+                anim.SetBool("combatStance", false);
+            }
+
+            if(Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && !anim.GetBool("c1") && !anim.GetBool("repeatController")){
+
+                anim.SetBool("c1", true);
+                chain = false;
+                
+            }
+
+            if(Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && (anim.GetBool("c1") || anim.GetBool("c2")) && anim.GetBool("repeatController")){
+
+                chain = true;
+                
+            }
+
+        
+
         }
 
         private void Step() {
@@ -115,6 +152,59 @@ namespace Animation.Player {
                 }
             }
         }
-    }
+
+        private void SwordIn(){
+
+            SwordBack.SetActive(false);
+            SwordHand.SetActive(true);
+
+        }
+
+        private void SwordOut(){
+
+            SwordBack.SetActive(true);
+            SwordHand.SetActive(false);
+
+        }
+
+        private void ComboTwo(){
+
+            anim.SetBool("c1", false);
+
+            if(chain){
+                anim.SetBool("c2", true);
+                chain = false;
+                }else{anim.SetBool("exitAttack", true);}
+        }
+
+        private void ComboThree(){
+
+            anim.SetBool("c2", false);
+
+            if(chain){
+            anim.SetBool("c3", true);
+            chain = false;
+            }else{anim.SetBool("exitAttack", true);}
+        }
+
+        private void ComboEnd(){
+
+            anim.SetBool("c3", false);
+
+        }
+
+        private void ResetController(){
+
+            anim.SetBool("repeatController", false);
+        }
+
+        private void AResetController(){
+            anim.SetBool("repeatController", true);
+            anim.SetBool("exitAttack", false);
+
+        }
+
+        
+    }   
 
 }
