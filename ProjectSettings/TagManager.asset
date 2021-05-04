@@ -15,6 +15,7 @@ TagManager:
   - Fabbro
   - Suora
   - Maschere
+  - PlayerManager
   layers:
   - Default
   - TransparentFX

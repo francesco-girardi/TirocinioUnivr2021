@@ -19,7 +19,7 @@ namespace Animation.Player {
         // private GameObject visualEffect;
 
         private void Start() {
-            InvokeRepeating("ChangeStance", 2.0f, 10.0f);
+            InvokeRepeating("ChangeStance", 2.0f, 2.0f);
         }
 
         private void ChangeStance() {

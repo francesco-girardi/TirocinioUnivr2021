@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Movement;
+﻿using Movement;
+using UnityEngine;
 
 namespace Animation.Player {
     public class PlayerAnimator : CharacterAnimator {
@@ -29,13 +29,21 @@ namespace Animation.Player {
         private bool jumped;
         private bool isGrounded;
         private bool chain = false;
+        private bool attacked = false;
+        public bool Attacked {
+            get => this.attacked;
+        }
+        private bool startedAttack = false;
+        public bool StartedAttack {
+            get => this.startedAttack;
+        }
 
         [SerializeField]
-         private GameObject SwordBack;
+        private GameObject SwordBack;
 
         [SerializeField]
-        private GameObject SwordHand;     
- 
+        private GameObject SwordHand;
+
 
 
         private void Awake() {
@@ -52,6 +60,8 @@ namespace Animation.Player {
 
         // Update is called once per frame
         protected void Update() {
+            this.attacked = false;
+
             baseMoveSpeed = controller.BaseMoveSpeed;
             sprintSpeed = controller.RunSpeed;
             crouchSpeed = controller.CrouchSpeed;
@@ -80,32 +90,34 @@ namespace Animation.Player {
             anim.SetBool("isGrounded", isGrounded);
 
 
-            
-            if(Input.GetButtonDown("CombatStance") && !isWalking && !isRunning && !isCrouched && !jumped && isGrounded ){
+
+            if (Input.GetButtonDown("CombatStance") && !isWalking && !isRunning && !isCrouched && !jumped && isGrounded) {
 
                 anim.SetBool("combatStance", true);
-            
+
             }
 
-            if(Input.GetButtonDown("EndCombatStance")){
+            if (Input.GetButtonDown("EndCombatStance")) {
 
                 anim.SetBool("combatStance", false);
             }
 
-            if(Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && !anim.GetBool("c1") && !anim.GetBool("repeatController")){
+            if (Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && !anim.GetBool("c1") && !anim.GetBool("repeatController")) {
 
+                this.attacked = true;
+                this.startedAttack = true;
                 anim.SetBool("c1", true);
                 chain = false;
-                
+
             }
 
-            if(Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && (anim.GetBool("c1") || anim.GetBool("c2")) && anim.GetBool("repeatController")){
+            if (Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && (anim.GetBool("c1") || anim.GetBool("c2")) && anim.GetBool("repeatController")) {
 
                 chain = true;
-                
+
             }
 
-        
+
 
         }
 
@@ -154,63 +166,75 @@ namespace Animation.Player {
             }
         }
 
-        private void SwordIn(){
+        private void SwordIn() {
 
             SwordBack.SetActive(false);
             SwordHand.SetActive(true);
 
         }
 
-        private void SwordOut(){
+        private void SwordOut() {
 
             SwordBack.SetActive(true);
             SwordHand.SetActive(false);
 
         }
 
-        private void ComboTwo(){
+        private void ComboTwo() {
 
             anim.SetBool("c1", false);
+            this.startedAttack = false;
 
-            if(chain){
+            if (chain) {
+                this.attacked = true;
+                this.startedAttack = true;
                 anim.SetBool("c2", true);
                 chain = false;
-                }else{anim.SetBool("exitAttack", true);}
+            }
+            else { anim.SetBool("exitAttack", true); }
         }
 
-        private void ComboThree(){
+        private void ComboThree() {
 
             anim.SetBool("c2", false);
+            this.startedAttack = false;
 
-            if(chain){
-            anim.SetBool("c3", true);
-            chain = false;
-            }else{anim.SetBool("exitAttack", true);}
+            if (chain) {
+                this.attacked = true;
+                this.startedAttack = true;
+                anim.SetBool("c3", true);
+                chain = false;
+            }
+            else { anim.SetBool("exitAttack", true); }
         }
 
-        private void ComboEnd(){
+        private void ComboEnd() {
 
             anim.SetBool("c3", false);
 
         }
 
-        private void ResetController(){
+        private void ResetController() {
 
             anim.SetBool("repeatController", false);
         }
 
-        private void AResetController(){
+        private void AResetController() {
             anim.SetBool("repeatController", true);
             anim.SetBool("exitAttack", false);
 
         }
 
-        private void RotateSword(){
+        private void RotateSword() {
 
 
             SwordHand.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
 
         }
-    }   
+
+        private void FinishAttack(){
+            this.startedAttack = false;
+        }
+    }
 
 }

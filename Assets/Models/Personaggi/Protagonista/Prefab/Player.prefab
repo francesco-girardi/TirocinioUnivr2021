@@ -2870,7 +2870,7 @@ GameObject:
   - component: {fileID: 9146540876050948724}
   - component: {fileID: 3677191167670328042}
   - component: {fileID: 6937845771671799286}
-  - component: {fileID: 5216925639547838687}
+  - component: {fileID: 1209640005431288156}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a24e76e24a644f949a28750bfe5ca7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5216925639547838687
+--- !u!114 &1209640005431288156
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3007,12 +3007,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 9146540876050948714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2125cf82d931b5047b8fa656f7531b6f, type: 3}
+  m_Script: {fileID: 11500000, guid: a6d1ac566dfcf3e4bb55680c1dcd6d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sword: {fileID: 1154009136439905851}
+  Sword: {fileID: 2181413488908737264}
   BaseMat: {fileID: 2100000, guid: d4ec4af43f1d61d4cbf58b4540ebfd74, type: 2}
   ActiveMat: {fileID: 2100000, guid: 2cb44a5f45fc00a488a0f16ff2bbcfa5, type: 2}
+  visualEffect: {fileID: 0}
 --- !u!1 &9197426825749993919
 GameObject:
   m_ObjectHideFlags: 0
