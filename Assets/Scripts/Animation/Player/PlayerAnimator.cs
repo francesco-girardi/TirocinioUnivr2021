@@ -35,6 +35,7 @@ namespace Animation.Player {
 
         [SerializeField]
         private GameObject SwordHand;     
+ 
 
 
         private void Awake() {
@@ -204,7 +205,12 @@ namespace Animation.Player {
 
         }
 
-        
+        private void RotateSword(){
+
+
+            SwordHand.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+
+        }
     }   
 
 }
