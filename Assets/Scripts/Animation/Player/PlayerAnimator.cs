@@ -108,13 +108,11 @@ namespace Animation.Player {
                 this.startedAttack = true;
                 anim.SetBool("c1", true);
                 chain = false;
-
             }
 
             if (Input.GetButtonDown("Fire1") && anim.GetBool("combatStance") && (anim.GetBool("c1") || anim.GetBool("c2")) && anim.GetBool("repeatController")) {
-
+                
                 chain = true;
-
             }
 
 
