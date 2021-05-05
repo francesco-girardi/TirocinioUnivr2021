@@ -14,9 +14,12 @@ namespace Interactions {
         public GameObject maschere;
         public GameObject suora;
         public GameObject fabbro;
+        private EscMenu escMenu;
 
         void Start() {
-
+            escMenu = GameObject.FindObjectOfType<EscMenu>();
+            if(escMenu != null)
+                Debug.Log("trovato");
         }
 
         void Update() {
@@ -27,7 +30,7 @@ namespace Interactions {
             Vector3 posizione = new Vector3(18.19f, 2.79f, 17.28f);
 
             if (Input.GetKey(KeyCode.E) && isShopping == false) {
-                EscMenu.GamePaused = true;
+                escMenu.Pause();
                 Cursor.lockState = CursorLockMode.None;
                 switch (this.tag) {
                     case "Alchimista":
@@ -53,7 +56,7 @@ namespace Interactions {
                 CloseCanvas();
                 Cursor.lockState = CursorLockMode.Locked;
                 isShopping = false;
-                EscMenu.GamePaused = false;
+                escMenu.Resume();
             }
         }
 

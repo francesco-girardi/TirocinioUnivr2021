@@ -18,8 +18,6 @@ namespace VFX {
         [SerializeField]
         private Material ActiveMat;
 
-        bool isActive = false;
-
         [SerializeField]
         private GameObject visualEffect;
 
@@ -37,10 +35,6 @@ namespace VFX {
         private IEnumerator GetPlayer() {
             yield return new WaitForSeconds(0.5f);
             animator = player.playerObject.GetComponentInChildren<PlayerAnimator>();
-            if (animator == null)
-                Debug.Log("null");
-            else
-                Debug.Log("trovato");
         }
 
         public void Update() {
@@ -70,14 +64,12 @@ namespace VFX {
             Sword.material = ActiveMat;
             if (visualEffect != null)
                 visualEffect.SetActive(true);
-            isActive = true;
         }
 
         void ToggleOff() {
             Sword.material = BaseMat;
             if (visualEffect != null)
                 visualEffect.SetActive(false);
-            isActive = false;
         }
     }
 }

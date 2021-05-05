@@ -12,7 +12,6 @@ namespace UI {
 
         public static bool GamePaused {
             get => gamePaused;
-            set => gamePaused = value;
         }
 
         public GameObject pauseMenuUI;
