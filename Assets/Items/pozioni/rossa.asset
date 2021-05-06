@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: rossa
   m_EditorClassIdentifier: Assembly-CSharp:Interactions.Items:Potions
-  name: New Item
-  icon: {fileID: 0}
+  name: Pozione Rossa
+  icon: {fileID: 21300000, guid: 96c78744f2b26344896f6db2e9b1820a, type: 3}
   Effect_duration: 0

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: gialla
   m_EditorClassIdentifier: Assembly-CSharp:Interactions.Items:Potions
-  name: New Item
-  icon: {fileID: 0}
+  name: Pozione Gialla
+  icon: {fileID: 21300000, guid: 1a390445d923a334b818389dab6cf942, type: 3}
   Effect_duration: 0
