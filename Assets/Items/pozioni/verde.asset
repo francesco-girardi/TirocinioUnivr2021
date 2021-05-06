@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: verde
   m_EditorClassIdentifier: Assembly-CSharp:Interactions.Items:Potions
-  name: pozza Verde
-  icon: {fileID: 21300000, guid: 6a21c5c997d43e54bae0d8d197273cf9, type: 3}
+  name: New Item
+  icon: {fileID: 0}
   Effect_duration: 0

@@ -14,7 +14,7 @@ namespace Interactions.Inventory {
 
         public bool AddItem(Item item) {
 
-            if (space >= items.Count) {
+            if (space <= items.Count) {
                 Debug.Log("Not enought room.");
                 return false;
             }
