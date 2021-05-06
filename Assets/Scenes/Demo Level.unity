@@ -16269,7 +16269,7 @@ PrefabInstance:
     - target: {fileID: 7525048426139699794, guid: dce8b1b987284a24d90b627ef6e3cf18,
         type: 3}
       propertyPath: timeWindow
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dce8b1b987284a24d90b627ef6e3cf18, type: 3}
