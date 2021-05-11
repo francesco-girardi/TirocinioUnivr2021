@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using Stat;
 using Events;
 using Interactions;
 using Data;
+using Audio;
+using System.Collections;
 
 public class PlayerLogic : CharacterStats {
 
@@ -132,6 +132,20 @@ public class PlayerLogic : CharacterStats {
         if (transform.position.y == -100)
             transform.position = new Vector3(transform.position.x, 50, transform.position.z);
 
+        int temp = (int)SoundAnalyzer.Amplitude * 1000;
+
+        if (SongController.Instance.IsPeak) {
+            damage.AddModifier(temp);
+        }
+
+        //StartCoroutine(resetDamage());
+
+    }
+
+    private IEnumerator resetDamage() {
+        yield return new WaitForSeconds(0.5f);
+
+        damage.RemoveModifier(4);
     }
 
     private void SetFocus(Interactable interactable) {

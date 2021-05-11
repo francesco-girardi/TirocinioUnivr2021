@@ -23,7 +23,6 @@ namespace Audio {
         /// <br>Band 2: (259 - 602) Hz</br><br>Band 3: (603 - 1290) Hz</br>
         /// <br>Band 4: (1291 - 2666) Hz</br><br>Band 5: (2667 - 5418) Hz</br>
         /// <br>Band 6: (5419 - 10922) Hz</br><br>Band 7: (10923 - 21930) Hz</br>
-        /// <br>Band 8: (21931 - 43947) Hz</br>
         /// </summary>
         public static float[] AudioBand {
             get {

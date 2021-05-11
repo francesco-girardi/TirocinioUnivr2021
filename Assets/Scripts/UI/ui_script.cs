@@ -39,8 +39,6 @@ namespace UI {
             // healthSlider.GetComponentInChildren<Slider>();
             // healthText.GetComponentInChildren<TMP_Text>();
 
-            StartCoroutine(InitMinMax());
-
             fill.color = gradient.Evaluate(1f);
             border.color = gradient.Evaluate(1f);
 
@@ -104,9 +102,12 @@ namespace UI {
         private IEnumerator getTarget() {
             yield return new WaitForSeconds(0.5f);
 
-            inventory = GameObject.FindObjectOfType<Inventory>();
+            inventory = FindObjectOfType<Inventory>();
             player = PlayerManager.Instance.playerObject;
             playerLogic = player.GetComponent<PlayerLogic>();
+
+            if (inventory.items.Count > 0)
+                StartCoroutine(InitMinMax());
         }
 
     }

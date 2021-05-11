@@ -32,7 +32,6 @@ namespace Interactions.Inventory {
         private IEnumerator GetPlayer() {
             yield return new WaitForSeconds(0.5f);
             player = playerManager.GetComponent<PlayerLogic>();
-            Debug.Log("personaggio trovato");
         }
 
         private void Update() {

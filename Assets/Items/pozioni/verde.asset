@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: verde
   m_EditorClassIdentifier: Assembly-CSharp:Interactions.Items:Potions
   name: verde
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6a21c5c997d43e54bae0d8d197273cf9, type: 3}
   Effect_duration: 0
   cd: 10
   healthreg: 10
