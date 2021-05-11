@@ -1,7 +1,9 @@
 ﻿using System.Collections;
+using Interactions.Inventory;
+using Interactions.Items;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 namespace UI {
     public class ui_script : MonoBehaviour {
@@ -21,7 +23,13 @@ namespace UI {
 
         public TMP_Text minfps;
 
+        public TMP_Text redPotionCd;
+
+        public Slider redPotionSlider;
+
         GameObject player;
+
+        Inventory inventory;
 
         PlayerLogic playerLogic;
 
@@ -36,7 +44,6 @@ namespace UI {
             fill.color = gradient.Evaluate(1f);
             border.color = gradient.Evaluate(1f);
 
-           
 
             InvokeRepeating("FpsUpdate", 0f, 0.3f);
         }
@@ -45,9 +52,18 @@ namespace UI {
         void Update() {
             HealthUpdate();
             FpsMaxMin();
+            RedPotionCdUpdate();
         }
 
-        void HealthUpdate(){
+        void RedPotionCdUpdate() {
+
+            if (inventory != null) {
+                redPotionCd.SetText(inventory.cd.ToString("#.#"));
+                redPotionSlider.value = inventory.cd;
+            }
+        }
+
+        void HealthUpdate() {
             int health = 0;
 
             if (playerLogic != null)
@@ -59,24 +75,28 @@ namespace UI {
             border.color = gradient.Evaluate(healthSlider.normalizedValue);
         }
 
-        void FpsUpdate(){
-            int fps = (int)(1 /Time.unscaledDeltaTime);
+        void FpsUpdate() {
+            int fps = (int)(1 / Time.unscaledDeltaTime);
             fpsText.SetText(fps.ToString());
         }
 
-        void FpsMaxMin(){
-            int fps = (int)(1 /Time.unscaledDeltaTime);
-            if(fps<int.Parse(minfps.text))
+        void FpsMaxMin() {
+            int fps = (int)(1 / Time.unscaledDeltaTime);
+            if (fps < int.Parse(minfps.text))
                 minfps.SetText(fps.ToString());
-            
-            if(fps>int.Parse(maxfps.text))
+
+            if (fps > int.Parse(maxfps.text))
                 maxfps.SetText(fps.ToString());
         }
 
-        private IEnumerator InitMinMax(){
-            yield return new WaitForSeconds(5f);
+        private IEnumerator InitMinMax() {
+            yield return new WaitForSeconds(2f);
 
-            int fps = (int)(1 /Time.unscaledDeltaTime);
+            Potions pozza;
+            pozza = (Potions)inventory.items.Find(x => x.name == "rossa");
+            redPotionSlider.maxValue = pozza.cd;
+
+            int fps = (int)(1 / Time.unscaledDeltaTime);
             maxfps.SetText(fps.ToString());
             minfps.SetText(fps.ToString());
         }
@@ -84,6 +104,7 @@ namespace UI {
         private IEnumerator getTarget() {
             yield return new WaitForSeconds(0.5f);
 
+            inventory = GameObject.FindObjectOfType<Inventory>();
             player = PlayerManager.Instance.playerObject;
             playerLogic = player.GetComponent<PlayerLogic>();
         }

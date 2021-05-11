@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace Stat {
 
@@ -45,6 +45,17 @@ namespace Stat {
 
             if (currentHealth <= 0)
                 Die();
+        }
+
+        public void RegenHealth(int value){
+            
+            currentHealth += value;
+            if(currentHealth > maxHealth)
+                currentHealth = maxHealth;
+            
+            if (currentHealth <= 0)
+                Die();
+
         }
 
         /// <summary>
