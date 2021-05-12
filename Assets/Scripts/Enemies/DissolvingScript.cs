@@ -13,20 +13,42 @@ public class DissolvingScript : MonoBehaviour
     private VisualEffect VFXGraph;
 
     [SerializeField]
-    private float dissolveRate = 0.02f;
+    private Material mat;
 
-    [SerializeField]
-    private float refreshRate = 0.05f;
+    private bool death = false;
+    private float counter = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(VFXGraph != null)
+        {
+            VFXGraph.Stop();
+            VFXGraph.gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            death = true;
+                if(VFXGraph != null)
+                {
+                    VFXGraph.gameObject.SetActive(true);
+                    VFXGraph.Play();
+                }
+        }
+
+        if(death)
+        {
+            while(mat.GetFloat("DissolveAmount_") < 1){
+                counter = counter + 0.1f;
+                mat.SetFloat("DissolveAmount", counter);
+            }
+        }
+
     }
+    
+
+
 }
