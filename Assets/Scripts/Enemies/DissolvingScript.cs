@@ -15,8 +15,8 @@ public class DissolvingScript : MonoBehaviour
     [SerializeField]
     private Material mat;
 
-    private bool death = false;
-    private float counter = 0.0f;
+    private float counter = 0.00f;
+    private float refreshRate = 0.05f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,25 +30,38 @@ public class DissolvingScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            death = true;
-                if(VFXGraph != null)
+        
+            if (Input.GetKeyDown(KeyCode.X)){
+                if(mat.GetFloat("DissolveAmount_") < 1f)
                 {
-                    VFXGraph.gameObject.SetActive(true);
-                    VFXGraph.Play();
+                    if(VFXGraph != null)
+                    {
+                        VFXGraph.gameObject.SetActive(true);
+                        VFXGraph.Play();
+                    }
+                StartCoroutine (Dissolve());
+                }else{
+                    mat.SetFloat("DissolveAmount_", 0.0f);
+                    counter = 0.00f;
                 }
-        }
-
-        if(death)
-        {
-            while(mat.GetFloat("DissolveAmount_") < 1){
-                counter = counter + 0.1f;
-                mat.SetFloat("DissolveAmount", counter);
             }
-        }
+        
+
+      
 
     }
     
+    IEnumerator Dissolve ()
+    {
+
+            while(mat.GetFloat("DissolveAmount_") < 1f){
+                counter = counter + 0.02f;
+                mat.SetFloat("DissolveAmount_", counter);
+
+                yield return new WaitForSeconds (refreshRate);
+            }
+        
+    }
 
 
 }

@@ -217,6 +217,16 @@ namespace Animation.Player {
             anim.SetBool("repeatController", false);
         }
 
+         private void NoJump() {
+
+            anim.SetBool("isAttacking", true);
+        }
+
+         private void YesJump() {
+
+            anim.SetBool("isAttacking", false);
+        }
+
         private void AResetController() {
             anim.SetBool("repeatController", true);
             anim.SetBool("exitAttack", false);

@@ -2806,6 +2806,7 @@ MonoBehaviour:
   jumpSpeed: 30
   rotationSpeed: 720
   gravity: -60
+  anim: {fileID: 1794184867602876384}
 --- !u!114 &3677191167670328042
 MonoBehaviour:
   m_ObjectHideFlags: 0

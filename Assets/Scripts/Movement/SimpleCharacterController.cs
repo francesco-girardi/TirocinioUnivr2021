@@ -51,6 +51,9 @@ namespace Movement {
 
         private const float minVerticalSpeed = -12f;
 
+        [SerializeField]
+        private Animator anim;
+
         // Allowed time before the character is set to ungrounded from the last time he was safely grounded.
         private const float timeBeforeUngrounded = 0.1f;
 
@@ -121,6 +124,10 @@ namespace Movement {
             Vector3 moveDirection = CameraRelativeVectorFromInput(horizontalInput, verticalInput);
 
             UpdateMovement(moveDirection, Time.deltaTime);
+
+
+
+            
         }
 
         private void UpdateMovement(Vector3 moveDirection, float deltaTime) {
@@ -137,7 +144,7 @@ namespace Movement {
             // if(isGrounded)
             //     jumped = false;
 
-            if (isGrounded && Input.GetButtonDown("Jump") && !isDashing) {
+            if (isGrounded && Input.GetButtonDown("Jump") && !isDashing && !anim.GetBool("isAttacking")) {
                 verticalSpeed = jumpSpeed;
                 nextUngroundedTime = -1f;
                 isGrounded = false;
@@ -164,7 +171,7 @@ namespace Movement {
                 // CROUCH - RUN
                 if (IsCrouched){
                     Crouch();
-                }else if (Input.GetButton("Run") && !isDashing){
+                }else if (Input.GetButton("Run") && !isDashing && !anim.GetBool("isAttacking")){
                     Run();
                 }else if(!isDashing){
                     Walk();
@@ -255,8 +262,12 @@ namespace Movement {
             isWalking = true;
             isRunning = false;
             isDashing = false;
-
-            moveSpeed = baseMoveSpeed;
+            if(anim.GetBool("isAttacking"))
+            {
+                moveSpeed = baseMoveSpeed/1.5f;
+            }else{
+               moveSpeed = baseMoveSpeed; 
+            }
         }
         private void Run(){
             isWalking = false;
